@@ -1,5 +1,5 @@
-baseURL = "https://lmorillas.github.io/dwes"
-title = "Desarrollo Web Entorno Servidor"
+baseURL = "https://lmorillas.github.io/hugo-tutorial"
+title = "Generadores estáticos. Hugo"
 
 enableRobotsTXT = true
 
@@ -54,8 +54,8 @@ anchor = "smart"
 
 [languages]
 [languages.es]
-title = "Desarrollo Web Entorno Servidor"
-description = "Documentación Módulo DAW"
+title = "Webs estáticas con Hugo"
+description = "Documentación para el aula"
 languageName ="Castellano"
 # Weight used for sorting.
 weight = 1
@@ -131,7 +131,7 @@ prism_syntax_highlighting = false
 # Enable to show the side bar menu in its compact state.
 sidebar_menu_compact = true
 #  Set to true to disable breadcrumb navigation.
-breadcrumb_disable = false
+breadcrumb_disable = true
 #  Set to true to hide the sidebar search box (the top nav search box will still be displayed if search is enabled)
 sidebar_search_disable = false
 #  Set to false if you don't want to display a logo (/assets/icons/logo.svg) in the top nav bar
