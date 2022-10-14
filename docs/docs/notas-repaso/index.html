@@ -1,0 +1,398 @@
+<!doctype html>
+<html lang="es" class="no-js">
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="generator" content="Hugo 0.102.3" />
+<meta name="robots" content="index, follow">
+
+
+<link rel="shortcut icon" href="/hugo-tutorial/favicons/favicon.ico" >
+<link rel="apple-touch-icon" href="/hugo-tutorial/favicons/apple-touch-icon-180x180.png" sizes="180x180">
+<link rel="icon" type="image/png" href="/hugo-tutorial/favicons/favicon-16x16.png" sizes="16x16">
+<link rel="icon" type="image/png" href="/hugo-tutorial/favicons/favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="/hugo-tutorial/favicons/android-36x36.png" sizes="36x36">
+<link rel="icon" type="image/png" href="/hugo-tutorial/favicons/android-48x48.png" sizes="48x48">
+<link rel="icon" type="image/png" href="/hugo-tutorial/favicons/android-72x72.png" sizes="72x72">
+<link rel="icon" type="image/png" href="/hugo-tutorial/favicons/android-96x96.png" sizes="96x96">
+<link rel="icon" type="image/png" href="/hugo-tutorial/favicons/android-144x144.png" sizes="144x144">
+<link rel="icon" type="image/png" href="/hugo-tutorial/favicons/android-192x192.png" sizes="192x192">
+
+<title>Algunas notas de repaso | Webs estáticas con Hugo</title>
+<meta name="description" content="Estructura del sitio
+misitio
+├── archetypes
+|   └── default.md
+├── content
+├── data
+├── layouts
+|   ├── _default
+|   |   └── baseof.html
+|   └── …">
+<meta property="og:title" content="Algunas notas de repaso" />
+<meta property="og:description" content="Estructura del sitio misitio ├── archetypes | └── default.md ├── content ├── data ├── layouts | ├── _default | | └── baseof.html | └── index.html ├── static ├── themes └── config.toml Un tutorial https://hugo-mini-course.netlify.app/sections/templating/singlepage/ Sintaxis de templates Variables
+&lt;title&gt;{{ .Title }}&lt;/title&gt; Contenido md de la página {{.Content}}
+Bucles
+{{ range .Pages.ByWeight }} &lt;li&gt; &lt;a href=&#34;{{.Permalink}}&#34;&gt;{{.Date.Format &#34;2006-01-02&#34;}} | {{.Title}}&lt;/a&gt; &lt;/li&gt; {{ end }} Proceso de imágenes https://gohugo.io/content-management/image-processing/
+{{ $asset := resources.Get &#34;/duck." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://lmorillas.github.io/hugo-tutorial/docs/notas-repaso/" /><meta property="article:section" content="docs" />
+<meta property="article:published_time" content="2021-09-27T00:00:00+00:00" />
+<meta property="article:modified_time" content="2022-10-14T10:07:55+02:00" /><meta property="og:site_name" content="Webs estáticas con Hugo" />
+
+<meta itemprop="name" content="Algunas notas de repaso">
+<meta itemprop="description" content="Estructura del sitio misitio ├── archetypes | └── default.md ├── content ├── data ├── layouts | ├── _default | | └── baseof.html | └── index.html ├── static ├── themes └── config.toml Un tutorial https://hugo-mini-course.netlify.app/sections/templating/singlepage/ Sintaxis de templates Variables
+&lt;title&gt;{{ .Title }}&lt;/title&gt; Contenido md de la página {{.Content}}
+Bucles
+{{ range .Pages.ByWeight }} &lt;li&gt; &lt;a href=&#34;{{.Permalink}}&#34;&gt;{{.Date.Format &#34;2006-01-02&#34;}} | {{.Title}}&lt;/a&gt; &lt;/li&gt; {{ end }} Proceso de imágenes https://gohugo.io/content-management/image-processing/
+{{ $asset := resources.Get &#34;/duck."><meta itemprop="datePublished" content="2021-09-27T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2022-10-14T10:07:55+02:00" />
+<meta itemprop="wordCount" content="201">
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Algunas notas de repaso"/>
+<meta name="twitter:description" content="Estructura del sitio misitio ├── archetypes | └── default.md ├── content ├── data ├── layouts | ├── _default | | └── baseof.html | └── index.html ├── static ├── themes └── config.toml Un tutorial https://hugo-mini-course.netlify.app/sections/templating/singlepage/ Sintaxis de templates Variables
+&lt;title&gt;{{ .Title }}&lt;/title&gt; Contenido md de la página {{.Content}}
+Bucles
+{{ range .Pages.ByWeight }} &lt;li&gt; &lt;a href=&#34;{{.Permalink}}&#34;&gt;{{.Date.Format &#34;2006-01-02&#34;}} | {{.Title}}&lt;/a&gt; &lt;/li&gt; {{ end }} Proceso de imágenes https://gohugo.io/content-management/image-processing/
+{{ $asset := resources.Get &#34;/duck."/>
+
+
+
+
+<link rel="preload" href="/hugo-tutorial/scss/main.min.6f9a61915ae86417164c61d275528c590ac6e5f9dadf5e49cacc7e18108a8014.css" as="style">
+<link href="/hugo-tutorial/scss/main.min.6f9a61915ae86417164c61d275528c590ac6e5f9dadf5e49cacc7e18108a8014.css" rel="stylesheet" integrity="">
+
+<script
+  src="https://code.jquery.com/jquery-3.6.0.min.js"
+  integrity="sha384-vtXRMe3mGCbOeY7l30aIg8H9p3GdeSe4IFlP6G8JMa7o7lXvnz3GFKzPxzJdPfGK"
+  crossorigin="anonymous"></script>
+
+  </head>
+  <body class="td-page">
+    <header>
+      
+<nav class="js-navbar-scroll navbar navbar-expand navbar-dark flex-column flex-md-row td-navbar">
+        <a class="navbar-brand" href="/hugo-tutorial/">
+		<span class="navbar-logo"></span><span class="font-weight-bold">Webs estáticas con Hugo</span>
+	</a>
+	<div class="td-navbar-nav-scroll ml-md-auto" id="main_navbar">
+		<ul class="navbar-nav mt-2 mt-lg-0">
+			
+			
+			
+			
+		</ul>
+	</div>
+	<div class="navbar-nav d-none d-lg-block"></div>
+</nav>
+
+    </header>
+    <div class="container-fluid td-outer">
+      <div class="td-main">
+        <div class="row flex-xl-nowrap">
+          <aside class="col-12 col-md-3 col-xl-2 td-sidebar d-print-none">
+            
+<div id="td-sidebar-menu" class="td-sidebar__inner">
+  <form class="td-sidebar__search d-flex align-items-center">
+    
+    <button class="btn btn-link td-sidebar__toggle d-md-none p-0 ml-3 fas fa-bars" type="button" data-toggle="collapse" data-target="#td-section-nav" aria-controls="td-section-nav" aria-expanded="false" aria-label="Toggle section navigation">
+    </button>
+  </form>
+  <nav class="collapse td-sidebar-nav foldable-nav" id="td-section-nav">
+    <ul class="td-sidebar-nav__section pr-md-3 ul-0">
+      <li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child active-path" id="m-hugo-tutorialdocs-li">
+  <a href="/hugo-tutorial/docs/" class="align-left pl-0 td-sidebar-link td-sidebar-link__section tree-root" id="m-hugo-tutorialdocs"><span class="">Generadores de Sitios Estáticos</span></a>
+  <ul class="ul-1">
+    <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-hugo-tutorialdocsweben1minuto-li">
+  <input type="checkbox" id="m-hugo-tutorialdocsweben1minuto-check"/>
+  <label for="m-hugo-tutorialdocsweben1minuto-check"><a href="/hugo-tutorial/docs/weben1minuto/" class="align-left pl-0  td-sidebar-link td-sidebar-link__page" id="m-hugo-tutorialdocsweben1minuto"><span class="">Mi primera web con Hugo</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-hugo-tutorialdocstareamarkdown-li">
+  <input type="checkbox" id="m-hugo-tutorialdocstareamarkdown-check"/>
+  <label for="m-hugo-tutorialdocstareamarkdown-check"><a href="/hugo-tutorial/docs/tareamarkdown/" class="align-left pl-0  td-sidebar-link td-sidebar-link__page" id="m-hugo-tutorialdocstareamarkdown"><span class="">Tarea Markdown</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-hugo-tutorialdocscontenido-li">
+  <input type="checkbox" id="m-hugo-tutorialdocscontenido-check"/>
+  <label for="m-hugo-tutorialdocscontenido-check"><a href="/hugo-tutorial/docs/contenido/" class="align-left pl-0  td-sidebar-link td-sidebar-link__page" id="m-hugo-tutorialdocscontenido"><span class="">Cómo añadir contenido</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-hugo-tutorialdocsnuevo_tema-li">
+  <input type="checkbox" id="m-hugo-tutorialdocsnuevo_tema-check"/>
+  <label for="m-hugo-tutorialdocsnuevo_tema-check"><a href="/hugo-tutorial/docs/nuevo_tema/" class="align-left pl-0  td-sidebar-link td-sidebar-link__page" id="m-hugo-tutorialdocsnuevo_tema"><span class="">Crear un tema</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-hugo-tutorialdocsmenus-li">
+  <input type="checkbox" id="m-hugo-tutorialdocsmenus-check"/>
+  <label for="m-hugo-tutorialdocsmenus-check"><a href="/hugo-tutorial/docs/menus/" class="align-left pl-0  td-sidebar-link td-sidebar-link__page" id="m-hugo-tutorialdocsmenus"><span class="">Menús</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-hugo-tutorialdocsimagenes-li">
+  <input type="checkbox" id="m-hugo-tutorialdocsimagenes-check"/>
+  <label for="m-hugo-tutorialdocsimagenes-check"><a href="/hugo-tutorial/docs/imagenes/" class="align-left pl-0  td-sidebar-link td-sidebar-link__page" id="m-hugo-tutorialdocsimagenes"><span class="">Imágenes</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-hugo-tutorialdocstemplates-li">
+  <input type="checkbox" id="m-hugo-tutorialdocstemplates-check"/>
+  <label for="m-hugo-tutorialdocstemplates-check"><a href="/hugo-tutorial/docs/templates/" class="align-left pl-0  td-sidebar-link td-sidebar-link__page" id="m-hugo-tutorialdocstemplates"><span class="">Plantillas</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-hugo-tutorialdocsshortcodes-li">
+  <input type="checkbox" id="m-hugo-tutorialdocsshortcodes-check"/>
+  <label for="m-hugo-tutorialdocsshortcodes-check"><a href="/hugo-tutorial/docs/shortcodes/" class="align-left pl-0  td-sidebar-link td-sidebar-link__page" id="m-hugo-tutorialdocsshortcodes"><span class="">Shortcodes</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-hugo-tutorialdocsmapas_leaflet-li">
+  <input type="checkbox" id="m-hugo-tutorialdocsmapas_leaflet-check"/>
+  <label for="m-hugo-tutorialdocsmapas_leaflet-check"><a href="/hugo-tutorial/docs/mapas_leaflet/" class="align-left pl-0  td-sidebar-link td-sidebar-link__page" id="m-hugo-tutorialdocsmapas_leaflet"><span class="">Mapas Leaflet</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-hugo-tutorialdocsdatos-li">
+  <input type="checkbox" id="m-hugo-tutorialdocsdatos-check"/>
+  <label for="m-hugo-tutorialdocsdatos-check"><a href="/hugo-tutorial/docs/datos/" class="align-left pl-0  td-sidebar-link td-sidebar-link__page" id="m-hugo-tutorialdocsdatos"><span class="">Trabajo con datos</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-hugo-tutorialdocsbusqueda-li">
+  <input type="checkbox" id="m-hugo-tutorialdocsbusqueda-check"/>
+  <label for="m-hugo-tutorialdocsbusqueda-check"><a href="/hugo-tutorial/docs/busqueda/" class="align-left pl-0  td-sidebar-link td-sidebar-link__page" id="m-hugo-tutorialdocsbusqueda"><span class="">Búsqueda de páginas</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-hugo-tutorialdocsformulario-li">
+  <input type="checkbox" id="m-hugo-tutorialdocsformulario-check"/>
+  <label for="m-hugo-tutorialdocsformulario-check"><a href="/hugo-tutorial/docs/formulario/" class="align-left pl-0  td-sidebar-link td-sidebar-link__page" id="m-hugo-tutorialdocsformulario"><span class="">Inserción de formularios dinámicos</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child active-path" id="m-hugo-tutorialdocsnotas-repaso-li">
+  <input type="checkbox" id="m-hugo-tutorialdocsnotas-repaso-check" checked/>
+  <label for="m-hugo-tutorialdocsnotas-repaso-check"><a href="/hugo-tutorial/docs/notas-repaso/" class="align-left pl-0  active td-sidebar-link td-sidebar-link__page" id="m-hugo-tutorialdocsnotas-repaso"><span class="td-sidebar-nav-active-item">Algunas notas de repaso</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-hugo-tutorialdocsprivacidad-li">
+  <input type="checkbox" id="m-hugo-tutorialdocsprivacidad-check"/>
+  <label for="m-hugo-tutorialdocsprivacidad-check"><a href="/hugo-tutorial/docs/privacidad/" class="align-left pl-0  td-sidebar-link td-sidebar-link__page" id="m-hugo-tutorialdocsprivacidad"><span class="">Configuración GDPR</span></a></label>
+  
+</li>
+  </ul>
+</li>
+    </ul>
+  </nav>
+</div>
+
+          </aside>
+          <aside class="d-none d-xl-block col-xl-2 td-sidebar-toc d-print-none">
+            
+            
+
+
+<div class="td-toc"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#estructura-del-sitio">Estructura del sitio</a></li>
+    <li><a href="#un-tutorial">Un tutorial</a></li>
+    <li><a href="#sintaxis-de-templates">Sintaxis de templates</a></li>
+    <li><a href="#proceso-de-imágenes">Proceso de imágenes</a></li>
+    <li><a href="#tema-sencillo-pare-test">Tema sencillo pare test</a></li>
+    <li><a href="#trabajando-con-ficheros-de-datos">Trabajando con ficheros de datos:</a></li>
+  </ul>
+</nav></div>
+
+
+
+            
+
+	
+		
+
+
+
+  
+  
+
+	
+		
+
+
+
+  
+  
+
+	
+
+          </aside>
+          <main class="col-12 col-md-9 col-xl-8 pl-md-5" role="main">
+            
+  
+
+            
+            
+<div class="td-content">
+	<h1>Algunas notas de repaso</h1>
+	
+	<header class="article-meta">
+		
+
+  
+    
+
+
+  
+    
+
+
+  
+
+		
+	</header>    
+	<h2 id="estructura-del-sitio">Estructura del sitio</h2>
+<pre tabindex="0"><code>misitio
+├── archetypes
+|   └── default.md
+├── content
+├── data
+├── layouts
+|   ├── _default
+|   |   └── baseof.html
+|   └── index.html
+├── static
+├── themes
+└── config.toml
+</code></pre><h2 id="un-tutorial">Un tutorial</h2>
+<ul>
+<li><a href="https://hugo-mini-course.netlify.app/sections/templating/singlepage/">https://hugo-mini-course.netlify.app/sections/templating/singlepage/</a></li>
+</ul>
+<h2 id="sintaxis-de-templates">Sintaxis de templates</h2>
+<p><strong>Variables</strong></p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go-html-template" data-lang="go-html-template"><span style="display:flex;"><span><span style="color:#000;font-weight:bold">&lt;</span><span style="color:#204a87;font-weight:bold">title</span><span style="color:#000;font-weight:bold">&gt;</span><span style="color:#8f5902;font-style:italic">{{</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#c4a000">.Title</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#8f5902;font-style:italic">}}</span><span style="color:#000;font-weight:bold">&lt;/</span><span style="color:#204a87;font-weight:bold">title</span><span style="color:#000;font-weight:bold">&gt;</span>
+</span></span></code></pre></div><p><strong>Contenido md de la página</strong>
+<code>{{.Content}}</code></p>
+<p><strong>Bucles</strong></p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go-html-template" data-lang="go-html-template"><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">{{</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">range</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#c4a000">.Pages.ByWeight</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#8f5902;font-style:italic">}}</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#000;font-weight:bold">&lt;</span><span style="color:#204a87;font-weight:bold">li</span><span style="color:#000;font-weight:bold">&gt;</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#000;font-weight:bold">&lt;</span><span style="color:#204a87;font-weight:bold">a</span> <span style="color:#c4a000">href</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">&#34;</span><span style="color:#8f5902;font-style:italic">{{</span><span style="color:#c4a000">.Permalink</span><span style="color:#8f5902;font-style:italic">}}</span><span style="color:#4e9a06">&#34;</span><span style="color:#000;font-weight:bold">&gt;</span><span style="color:#8f5902;font-style:italic">{{</span><span style="color:#c4a000">.Date.Format</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#34;2006-01-02&#34;</span><span style="color:#8f5902;font-style:italic">}}</span> | <span style="color:#8f5902;font-style:italic">{{</span><span style="color:#c4a000">.Title</span><span style="color:#8f5902;font-style:italic">}}</span><span style="color:#000;font-weight:bold">&lt;/</span><span style="color:#204a87;font-weight:bold">a</span><span style="color:#000;font-weight:bold">&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#000;font-weight:bold">&lt;/</span><span style="color:#204a87;font-weight:bold">li</span><span style="color:#000;font-weight:bold">&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">{{</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">end</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#8f5902;font-style:italic">}}</span>
+</span></span></code></pre></div><h2 id="proceso-de-imágenes">Proceso de imágenes</h2>
+<p><a href="https://gohugo.io/content-management/image-processing/">https://gohugo.io/content-management/image-processing/</a></p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#000;font-weight:bold">{{</span> <span style="color:#a40000">$</span><span style="color:#000">asset</span> <span style="color:#ce5c00;font-weight:bold">:=</span> <span style="color:#000">resources</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">Get</span> <span style="color:#4e9a06">&#34;/duck.png&#34;</span> <span style="color:#000;font-weight:bold">}}</span>
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">{{</span> <span style="color:#a40000">$</span><span style="color:#000">img</span> <span style="color:#ce5c00;font-weight:bold">:=</span> <span style="color:#a40000">$</span><span style="color:#000">asset</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">Fit</span> <span style="color:#4e9a06">&#34;600x400&#34;</span> <span style="color:#000;font-weight:bold">}}</span>
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">&lt;</span><span style="color:#000">figure</span> <span style="color:#000">class</span><span style="color:#000;font-weight:bold">=</span><span style="color:#4e9a06">&#34;image is-3by2&#34;</span><span style="color:#000;font-weight:bold">&gt;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#000;font-weight:bold">&lt;</span><span style="color:#000">img</span> <span style="color:#000">alt</span><span style="color:#000;font-weight:bold">=</span><span style="color:#4e9a06">&#34;Yellow Duck&#34;</span> <span style="color:#000">src</span><span style="color:#000;font-weight:bold">=</span><span style="color:#4e9a06">&#34;{{ $img.RelPermalink }}&#34;</span> <span style="color:#ce5c00;font-weight:bold">/</span><span style="color:#000;font-weight:bold">&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">&lt;</span><span style="color:#ce5c00;font-weight:bold">/</span><span style="color:#000">figure</span><span style="color:#000;font-weight:bold">&gt;</span>
+</span></span></code></pre></div><h2 id="tema-sencillo-pare-test">Tema sencillo pare test</h2>
+<p><a href="https://github.com/zwbetz-gh/vanilla-bootstrap-hugo-theme">https://github.com/zwbetz-gh/vanilla-bootstrap-hugo-theme</a></p>
+<h2 id="trabajando-con-ficheros-de-datos">Trabajando con ficheros de datos:</h2>
+<p><code>data/socialmedia.json</code></p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span><span style="color:#000;font-weight:bold">{</span> <span style="color:#a40000">​</span> <span style="color:#204a87;font-weight:bold">&#34;accounts&#34;</span><span style="color:#a40000">​</span> <span style="color:#000;font-weight:bold">:</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#000;font-weight:bold">[</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#000;font-weight:bold">{</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#204a87;font-weight:bold">&#34;name&#34;</span><span style="color:#a40000">​</span> <span style="color:#000;font-weight:bold">:</span> <span style="color:#a40000">​</span> <span style="color:#4e9a06">&#34;Twitter&#34;</span><span style="color:#a40000">​</span> <span style="color:#000;font-weight:bold">,</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#204a87;font-weight:bold">&#34;url&#34;</span><span style="color:#a40000">​</span> <span style="color:#000;font-weight:bold">:</span> <span style="color:#a40000">​</span> <span style="color:#4e9a06">&#34;https://twitter.com/bphogan&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#000;font-weight:bold">},</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#000;font-weight:bold">{</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#204a87;font-weight:bold">&#34;name&#34;</span><span style="color:#a40000">​</span> <span style="color:#000;font-weight:bold">:</span> <span style="color:#a40000">​</span> <span style="color:#4e9a06">&#34;LinkedIn&#34;</span><span style="color:#a40000">​</span> <span style="color:#000;font-weight:bold">,</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#204a87;font-weight:bold">&#34;url&#34;</span><span style="color:#a40000">​</span> <span style="color:#000;font-weight:bold">:</span> <span style="color:#a40000">​</span> <span style="color:#4e9a06">&#34;https://linkedin.com/in/bphogan&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#000;font-weight:bold">}</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#000;font-weight:bold">]</span>
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">}</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go-html-template" data-lang="go-html-template"><span style="display:flex;"><span><span style="color:#000;font-weight:bold">&lt;</span><span style="color:#204a87;font-weight:bold">h3</span><span style="color:#000;font-weight:bold">&gt;</span>Social Media<span style="color:#000;font-weight:bold">&lt;/</span><span style="color:#204a87;font-weight:bold">h3</span><span style="color:#000;font-weight:bold">&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">&lt;</span><span style="color:#204a87;font-weight:bold">ul</span><span style="color:#000;font-weight:bold">&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">{{</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">range</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#c4a000">.Site.Data.socialmedia.accounts</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#8f5902;font-style:italic">}}</span>
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">&lt;</span><span style="color:#204a87;font-weight:bold">li</span><span style="color:#000;font-weight:bold">&gt;&lt;</span><span style="color:#204a87;font-weight:bold">a</span> <span style="color:#c4a000">href</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">​</span> <span style="color:#a40000">&#34;</span><span style="color:#8f5902;font-style:italic">{{</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#c4a000">.url</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#8f5902;font-style:italic">}}</span><span style="color:#a40000">&#34;​</span> <span style="color:#000;font-weight:bold">&gt;</span><span style="color:#8f5902;font-style:italic">{{</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#c4a000">.name</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#8f5902;font-style:italic">}}</span><span style="color:#000;font-weight:bold">&lt;/</span><span style="color:#204a87;font-weight:bold">a</span><span style="color:#000;font-weight:bold">&gt;&lt;/</span><span style="color:#204a87;font-weight:bold">li</span><span style="color:#000;font-weight:bold">&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">{{</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">end</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#8f5902;font-style:italic">}}</span>
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">&lt;/</span><span style="color:#204a87;font-weight:bold">ul</span><span style="color:#000;font-weight:bold">&gt;</span>
+</span></span></code></pre></div><p><strong>Ejemplo csv remoto</strong></p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go-html-template" data-lang="go-html-template"><span style="display:flex;"><span><span style="color:#000;font-weight:bold">&lt;</span><span style="color:#204a87;font-weight:bold">table</span><span style="color:#000;font-weight:bold">&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#000;font-weight:bold">&lt;</span><span style="color:#204a87;font-weight:bold">thead</span><span style="color:#000;font-weight:bold">&gt;</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#000;font-weight:bold">&lt;</span><span style="color:#204a87;font-weight:bold">tr</span><span style="color:#000;font-weight:bold">&gt;</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#000;font-weight:bold">&lt;</span><span style="color:#204a87;font-weight:bold">th</span><span style="color:#000;font-weight:bold">&gt;</span>Name<span style="color:#000;font-weight:bold">&lt;/</span><span style="color:#204a87;font-weight:bold">th</span><span style="color:#000;font-weight:bold">&gt;</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#000;font-weight:bold">&lt;</span><span style="color:#204a87;font-weight:bold">th</span><span style="color:#000;font-weight:bold">&gt;</span>Position<span style="color:#000;font-weight:bold">&lt;/</span><span style="color:#204a87;font-weight:bold">th</span><span style="color:#000;font-weight:bold">&gt;</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#000;font-weight:bold">&lt;</span><span style="color:#204a87;font-weight:bold">th</span><span style="color:#000;font-weight:bold">&gt;</span>Salary<span style="color:#000;font-weight:bold">&lt;/</span><span style="color:#204a87;font-weight:bold">th</span><span style="color:#000;font-weight:bold">&gt;</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#000;font-weight:bold">&lt;/</span><span style="color:#204a87;font-weight:bold">tr</span><span style="color:#000;font-weight:bold">&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#000;font-weight:bold">&lt;/</span><span style="color:#204a87;font-weight:bold">thead</span><span style="color:#000;font-weight:bold">&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#000;font-weight:bold">&lt;</span><span style="color:#204a87;font-weight:bold">tbody</span><span style="color:#000;font-weight:bold">&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#8f5902;font-style:italic">{{</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">$url</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">:=</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#34;https://example.com/finance/employee-salaries.csv&#34;</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#8f5902;font-style:italic">}}</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#8f5902;font-style:italic">{{</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">$sep</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">:=</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#34;,&#34;</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#8f5902;font-style:italic">}}</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#8f5902;font-style:italic">{{</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">range</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">$i</span><span style="color:#ce5c00;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">$r</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">:=</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">getCSV</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">$sep</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">$url</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#8f5902;font-style:italic">}}</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#000;font-weight:bold">&lt;</span><span style="color:#204a87;font-weight:bold">tr</span><span style="color:#000;font-weight:bold">&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#000;font-weight:bold">&lt;</span><span style="color:#204a87;font-weight:bold">td</span><span style="color:#000;font-weight:bold">&gt;</span><span style="color:#8f5902;font-style:italic">{{</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">index</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">$r</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">0</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#8f5902;font-style:italic">}}</span><span style="color:#000;font-weight:bold">&lt;/</span><span style="color:#204a87;font-weight:bold">td</span><span style="color:#000;font-weight:bold">&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#000;font-weight:bold">&lt;</span><span style="color:#204a87;font-weight:bold">td</span><span style="color:#000;font-weight:bold">&gt;</span><span style="color:#8f5902;font-style:italic">{{</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">index</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">$r</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">1</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#8f5902;font-style:italic">}}</span><span style="color:#000;font-weight:bold">&lt;/</span><span style="color:#204a87;font-weight:bold">td</span><span style="color:#000;font-weight:bold">&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#000;font-weight:bold">&lt;</span><span style="color:#204a87;font-weight:bold">td</span><span style="color:#000;font-weight:bold">&gt;</span><span style="color:#8f5902;font-style:italic">{{</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">index</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">$r</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">2</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#8f5902;font-style:italic">}}</span><span style="color:#000;font-weight:bold">&lt;/</span><span style="color:#204a87;font-weight:bold">td</span><span style="color:#000;font-weight:bold">&gt;</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#000;font-weight:bold">&lt;/</span><span style="color:#204a87;font-weight:bold">tr</span><span style="color:#000;font-weight:bold">&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#8f5902;font-style:italic">{{</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">end</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#8f5902;font-style:italic">}}</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#000;font-weight:bold">&lt;/</span><span style="color:#204a87;font-weight:bold">tbody</span><span style="color:#000;font-weight:bold">&gt;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#000;font-weight:bold">&lt;/</span><span style="color:#204a87;font-weight:bold">table</span><span style="color:#000;font-weight:bold">&gt;</span>
+</span></span></code></pre></div>
+	
+	
+	<div class="text-muted mt-5 pt-3 border-top">
+  Última modificación October 14, 2022: <a href="https://github.com/lmorillas/dwes/commit/96f81918867c02cc31daf508ce19ae1df098bb84">update (96f8191)</a>
+</div>
+
+</div>
+
+
+          </main>
+        </div>
+      </div>
+      
+<footer class="bg-dark py-5 row d-print-none">
+  <div class="container-fluid mx-sm-5">
+    <div class="row">
+      <div class="col-6 col-sm-4 text-xs-center order-sm-2">
+        
+      </div>
+      <div class="col-6 col-sm-4 text-right text-xs-center order-sm-3">
+        
+      </div>
+      <div class="col-12 col-sm-4 text-center py-2 order-sm-2">
+        <small class="text-white">&copy; 2022 @lmorillas Derechos reservados</small>
+        <small class="ml-1"><a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Política de privacidad</a></small>
+	
+		
+	
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+    integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+    crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.min.js"
+    integrity="sha512-UR25UO94eTnCVwjbXozyeVd6ZqpaAE9naiEUBK/A+QDbfSTQFhPGj5lOR6d8tsgbBk84Ggb5A3EkjsOgPRPcKA=="
+    crossorigin="anonymous"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/mermaid@8.13.4/dist/mermaid.min.js" integrity="sha512-JERecFUBbsm75UpkVheAuDOE8NdHjQBrPACfEQYPwvPG+fjgCpHAz1Jw2ci9EXmd3DdfiWth3O3CQvcfEg8gsA==" crossorigin="anonymous"></script>
+
+
+
+<style>
+.markmap > svg {
+  width: 100%;
+  height: 300px;
+}
+</style>
+<script>
+window.markmap = {
+  autoLoader: { manual: true },
+};
+</script>
+<script src="https://cdn.jsdelivr.net/npm/markmap-autoloader"></script>
+
+
+<script src='/js/tabpane-persist.js'></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script src="/hugo-tutorial/js/main.min.e0a752aa6c21a747d962a08f1eff7cc3567658032a6cbe09a650c335caf4674e.js" integrity="sha256-4KdSqmwhp0fZYqCPHv98w1Z2WAMqbL4JplDDNcr0Z04=" crossorigin="anonymous"></script>
+
+
+
+
+  </body>
+</html>

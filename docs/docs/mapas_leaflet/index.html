@@ -1,0 +1,350 @@
+<!doctype html>
+<html lang="es" class="no-js">
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="generator" content="Hugo 0.102.3" />
+<meta name="robots" content="index, follow">
+
+
+<link rel="shortcut icon" href="/hugo-tutorial/favicons/favicon.ico" >
+<link rel="apple-touch-icon" href="/hugo-tutorial/favicons/apple-touch-icon-180x180.png" sizes="180x180">
+<link rel="icon" type="image/png" href="/hugo-tutorial/favicons/favicon-16x16.png" sizes="16x16">
+<link rel="icon" type="image/png" href="/hugo-tutorial/favicons/favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="/hugo-tutorial/favicons/android-36x36.png" sizes="36x36">
+<link rel="icon" type="image/png" href="/hugo-tutorial/favicons/android-48x48.png" sizes="48x48">
+<link rel="icon" type="image/png" href="/hugo-tutorial/favicons/android-72x72.png" sizes="72x72">
+<link rel="icon" type="image/png" href="/hugo-tutorial/favicons/android-96x96.png" sizes="96x96">
+<link rel="icon" type="image/png" href="/hugo-tutorial/favicons/android-144x144.png" sizes="144x144">
+<link rel="icon" type="image/png" href="/hugo-tutorial/favicons/android-192x192.png" sizes="192x192">
+
+<title>Mapas Leaflet | Webs estáticas con Hugo</title>
+<meta name="description" content="
+
+
+Inserción de mapas con Leaflet
+
+
+
+Requisitos
+Leaflet necesita un css y un js
+css
+ &lt;script src= …">
+<meta property="og:title" content="Mapas Leaflet" />
+<meta property="og:description" content="Inserción de mapas con Leaflet
+Requisitos Leaflet necesita un css y un js
+css &lt;script src=&#34;https://unpkg.com/leaflet@1.9.1/dist/leaflet.js&#34; integrity=&#34;sha256-NDI0K41gVbWqfkkaHj15IzU7PtMoelkzyKp8TOaFQ3s=&#34; crossorigin=&#34;&#34;&gt;&lt;/script&gt; js &lt;script src=&#34;https://unpkg.com/leaflet@1.9.1/dist/leaflet.js&#34; integrity=&#34;sha256-NDI0K41gVbWqfkkaHj15IzU7PtMoelkzyKp8TOaFQ3s=&#34; crossorigin=&#34;&#34;&gt;&lt;/script&gt; Div en el html &lt;div id=&#34;map&#34;&gt;&lt;/div&gt; Altura del div en el css #map { height: 240px; } Cargar el mapa en el js Si tenemos las variables lat y lon en en el frontmatter de la página con las coordenadas del mapa, podemos cargar el mapa con el siguiente código:" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://lmorillas.github.io/hugo-tutorial/docs/mapas_leaflet/" /><meta property="article:section" content="docs" />
+<meta property="article:published_time" content="2017-01-05T00:00:00+00:00" />
+<meta property="article:modified_time" content="2022-10-14T10:07:55+02:00" /><meta property="og:site_name" content="Webs estáticas con Hugo" />
+
+<meta itemprop="name" content="Mapas Leaflet">
+<meta itemprop="description" content="Inserción de mapas con Leaflet
+Requisitos Leaflet necesita un css y un js
+css &lt;script src=&#34;https://unpkg.com/leaflet@1.9.1/dist/leaflet.js&#34; integrity=&#34;sha256-NDI0K41gVbWqfkkaHj15IzU7PtMoelkzyKp8TOaFQ3s=&#34; crossorigin=&#34;&#34;&gt;&lt;/script&gt; js &lt;script src=&#34;https://unpkg.com/leaflet@1.9.1/dist/leaflet.js&#34; integrity=&#34;sha256-NDI0K41gVbWqfkkaHj15IzU7PtMoelkzyKp8TOaFQ3s=&#34; crossorigin=&#34;&#34;&gt;&lt;/script&gt; Div en el html &lt;div id=&#34;map&#34;&gt;&lt;/div&gt; Altura del div en el css #map { height: 240px; } Cargar el mapa en el js Si tenemos las variables lat y lon en en el frontmatter de la página con las coordenadas del mapa, podemos cargar el mapa con el siguiente código:"><meta itemprop="datePublished" content="2017-01-05T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2022-10-14T10:07:55+02:00" />
+<meta itemprop="wordCount" content="101">
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Mapas Leaflet"/>
+<meta name="twitter:description" content="Inserción de mapas con Leaflet
+Requisitos Leaflet necesita un css y un js
+css &lt;script src=&#34;https://unpkg.com/leaflet@1.9.1/dist/leaflet.js&#34; integrity=&#34;sha256-NDI0K41gVbWqfkkaHj15IzU7PtMoelkzyKp8TOaFQ3s=&#34; crossorigin=&#34;&#34;&gt;&lt;/script&gt; js &lt;script src=&#34;https://unpkg.com/leaflet@1.9.1/dist/leaflet.js&#34; integrity=&#34;sha256-NDI0K41gVbWqfkkaHj15IzU7PtMoelkzyKp8TOaFQ3s=&#34; crossorigin=&#34;&#34;&gt;&lt;/script&gt; Div en el html &lt;div id=&#34;map&#34;&gt;&lt;/div&gt; Altura del div en el css #map { height: 240px; } Cargar el mapa en el js Si tenemos las variables lat y lon en en el frontmatter de la página con las coordenadas del mapa, podemos cargar el mapa con el siguiente código:"/>
+
+
+
+
+<link rel="preload" href="/hugo-tutorial/scss/main.min.6f9a61915ae86417164c61d275528c590ac6e5f9dadf5e49cacc7e18108a8014.css" as="style">
+<link href="/hugo-tutorial/scss/main.min.6f9a61915ae86417164c61d275528c590ac6e5f9dadf5e49cacc7e18108a8014.css" rel="stylesheet" integrity="">
+
+<script
+  src="https://code.jquery.com/jquery-3.6.0.min.js"
+  integrity="sha384-vtXRMe3mGCbOeY7l30aIg8H9p3GdeSe4IFlP6G8JMa7o7lXvnz3GFKzPxzJdPfGK"
+  crossorigin="anonymous"></script>
+
+  </head>
+  <body class="td-page">
+    <header>
+      
+<nav class="js-navbar-scroll navbar navbar-expand navbar-dark flex-column flex-md-row td-navbar">
+        <a class="navbar-brand" href="/hugo-tutorial/">
+		<span class="navbar-logo"></span><span class="font-weight-bold">Webs estáticas con Hugo</span>
+	</a>
+	<div class="td-navbar-nav-scroll ml-md-auto" id="main_navbar">
+		<ul class="navbar-nav mt-2 mt-lg-0">
+			
+			
+			
+			
+		</ul>
+	</div>
+	<div class="navbar-nav d-none d-lg-block"></div>
+</nav>
+
+    </header>
+    <div class="container-fluid td-outer">
+      <div class="td-main">
+        <div class="row flex-xl-nowrap">
+          <aside class="col-12 col-md-3 col-xl-2 td-sidebar d-print-none">
+            
+<div id="td-sidebar-menu" class="td-sidebar__inner">
+  <form class="td-sidebar__search d-flex align-items-center">
+    
+    <button class="btn btn-link td-sidebar__toggle d-md-none p-0 ml-3 fas fa-bars" type="button" data-toggle="collapse" data-target="#td-section-nav" aria-controls="td-section-nav" aria-expanded="false" aria-label="Toggle section navigation">
+    </button>
+  </form>
+  <nav class="collapse td-sidebar-nav foldable-nav" id="td-section-nav">
+    <ul class="td-sidebar-nav__section pr-md-3 ul-0">
+      <li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child active-path" id="m-hugo-tutorialdocs-li">
+  <a href="/hugo-tutorial/docs/" class="align-left pl-0 td-sidebar-link td-sidebar-link__section tree-root" id="m-hugo-tutorialdocs"><span class="">Generadores de Sitios Estáticos</span></a>
+  <ul class="ul-1">
+    <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-hugo-tutorialdocsweben1minuto-li">
+  <input type="checkbox" id="m-hugo-tutorialdocsweben1minuto-check"/>
+  <label for="m-hugo-tutorialdocsweben1minuto-check"><a href="/hugo-tutorial/docs/weben1minuto/" class="align-left pl-0  td-sidebar-link td-sidebar-link__page" id="m-hugo-tutorialdocsweben1minuto"><span class="">Mi primera web con Hugo</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-hugo-tutorialdocstareamarkdown-li">
+  <input type="checkbox" id="m-hugo-tutorialdocstareamarkdown-check"/>
+  <label for="m-hugo-tutorialdocstareamarkdown-check"><a href="/hugo-tutorial/docs/tareamarkdown/" class="align-left pl-0  td-sidebar-link td-sidebar-link__page" id="m-hugo-tutorialdocstareamarkdown"><span class="">Tarea Markdown</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-hugo-tutorialdocscontenido-li">
+  <input type="checkbox" id="m-hugo-tutorialdocscontenido-check"/>
+  <label for="m-hugo-tutorialdocscontenido-check"><a href="/hugo-tutorial/docs/contenido/" class="align-left pl-0  td-sidebar-link td-sidebar-link__page" id="m-hugo-tutorialdocscontenido"><span class="">Cómo añadir contenido</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-hugo-tutorialdocsnuevo_tema-li">
+  <input type="checkbox" id="m-hugo-tutorialdocsnuevo_tema-check"/>
+  <label for="m-hugo-tutorialdocsnuevo_tema-check"><a href="/hugo-tutorial/docs/nuevo_tema/" class="align-left pl-0  td-sidebar-link td-sidebar-link__page" id="m-hugo-tutorialdocsnuevo_tema"><span class="">Crear un tema</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-hugo-tutorialdocsmenus-li">
+  <input type="checkbox" id="m-hugo-tutorialdocsmenus-check"/>
+  <label for="m-hugo-tutorialdocsmenus-check"><a href="/hugo-tutorial/docs/menus/" class="align-left pl-0  td-sidebar-link td-sidebar-link__page" id="m-hugo-tutorialdocsmenus"><span class="">Menús</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-hugo-tutorialdocsimagenes-li">
+  <input type="checkbox" id="m-hugo-tutorialdocsimagenes-check"/>
+  <label for="m-hugo-tutorialdocsimagenes-check"><a href="/hugo-tutorial/docs/imagenes/" class="align-left pl-0  td-sidebar-link td-sidebar-link__page" id="m-hugo-tutorialdocsimagenes"><span class="">Imágenes</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-hugo-tutorialdocstemplates-li">
+  <input type="checkbox" id="m-hugo-tutorialdocstemplates-check"/>
+  <label for="m-hugo-tutorialdocstemplates-check"><a href="/hugo-tutorial/docs/templates/" class="align-left pl-0  td-sidebar-link td-sidebar-link__page" id="m-hugo-tutorialdocstemplates"><span class="">Plantillas</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-hugo-tutorialdocsshortcodes-li">
+  <input type="checkbox" id="m-hugo-tutorialdocsshortcodes-check"/>
+  <label for="m-hugo-tutorialdocsshortcodes-check"><a href="/hugo-tutorial/docs/shortcodes/" class="align-left pl-0  td-sidebar-link td-sidebar-link__page" id="m-hugo-tutorialdocsshortcodes"><span class="">Shortcodes</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child active-path" id="m-hugo-tutorialdocsmapas_leaflet-li">
+  <input type="checkbox" id="m-hugo-tutorialdocsmapas_leaflet-check" checked/>
+  <label for="m-hugo-tutorialdocsmapas_leaflet-check"><a href="/hugo-tutorial/docs/mapas_leaflet/" class="align-left pl-0  active td-sidebar-link td-sidebar-link__page" id="m-hugo-tutorialdocsmapas_leaflet"><span class="td-sidebar-nav-active-item">Mapas Leaflet</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-hugo-tutorialdocsdatos-li">
+  <input type="checkbox" id="m-hugo-tutorialdocsdatos-check"/>
+  <label for="m-hugo-tutorialdocsdatos-check"><a href="/hugo-tutorial/docs/datos/" class="align-left pl-0  td-sidebar-link td-sidebar-link__page" id="m-hugo-tutorialdocsdatos"><span class="">Trabajo con datos</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-hugo-tutorialdocsbusqueda-li">
+  <input type="checkbox" id="m-hugo-tutorialdocsbusqueda-check"/>
+  <label for="m-hugo-tutorialdocsbusqueda-check"><a href="/hugo-tutorial/docs/busqueda/" class="align-left pl-0  td-sidebar-link td-sidebar-link__page" id="m-hugo-tutorialdocsbusqueda"><span class="">Búsqueda de páginas</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-hugo-tutorialdocsformulario-li">
+  <input type="checkbox" id="m-hugo-tutorialdocsformulario-check"/>
+  <label for="m-hugo-tutorialdocsformulario-check"><a href="/hugo-tutorial/docs/formulario/" class="align-left pl-0  td-sidebar-link td-sidebar-link__page" id="m-hugo-tutorialdocsformulario"><span class="">Inserción de formularios dinámicos</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-hugo-tutorialdocsnotas-repaso-li">
+  <input type="checkbox" id="m-hugo-tutorialdocsnotas-repaso-check"/>
+  <label for="m-hugo-tutorialdocsnotas-repaso-check"><a href="/hugo-tutorial/docs/notas-repaso/" class="align-left pl-0  td-sidebar-link td-sidebar-link__page" id="m-hugo-tutorialdocsnotas-repaso"><span class="">Algunas notas de repaso</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-hugo-tutorialdocsprivacidad-li">
+  <input type="checkbox" id="m-hugo-tutorialdocsprivacidad-check"/>
+  <label for="m-hugo-tutorialdocsprivacidad-check"><a href="/hugo-tutorial/docs/privacidad/" class="align-left pl-0  td-sidebar-link td-sidebar-link__page" id="m-hugo-tutorialdocsprivacidad"><span class="">Configuración GDPR</span></a></label>
+  
+</li>
+  </ul>
+</li>
+    </ul>
+  </nav>
+</div>
+
+          </aside>
+          <aside class="d-none d-xl-block col-xl-2 td-sidebar-toc d-print-none">
+            
+            
+
+
+<div class="td-toc"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#requisitos">Requisitos</a>
+      <ul>
+        <li><a href="#css">css</a></li>
+        <li><a href="#js">js</a></li>
+        <li><a href="#div-en-el-html">Div en el html</a></li>
+        <li><a href="#altura-del-div-en-el-css">Altura del div en el css</a></li>
+        <li><a href="#cargar-el-mapa-en-el-js">Cargar el mapa en el js</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+
+
+
+            
+
+	
+		
+
+
+
+  
+  
+
+	
+		
+
+
+
+  
+  
+
+	
+
+          </aside>
+          <main class="col-12 col-md-9 col-xl-8 pl-md-5" role="main">
+            
+  
+
+            
+            
+<div class="td-content">
+	<h1>Mapas Leaflet</h1>
+	
+	<header class="article-meta">
+		
+
+  
+    
+
+
+  
+    
+
+
+  
+
+		
+	</header>    
+	
+
+<div class="pageinfo pageinfo-primary">
+<p>Inserción de mapas con <a href="https://leafletjs.com/">Leaflet</a></p>
+
+</div>
+
+<h2 id="requisitos">Requisitos</h2>
+<p>Leaflet necesita un css y un js</p>
+<h3 id="css">css</h3>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span> <span style="color:#000;font-weight:bold">&lt;</span><span style="color:#204a87;font-weight:bold">script</span> <span style="color:#c4a000">src</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">&#34;https://unpkg.com/leaflet@1.9.1/dist/leaflet.js&#34;</span>
+</span></span><span style="display:flex;"><span>   <span style="color:#c4a000">integrity</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">&#34;sha256-NDI0K41gVbWqfkkaHj15IzU7PtMoelkzyKp8TOaFQ3s=&#34;</span>
+</span></span><span style="display:flex;"><span>   <span style="color:#c4a000">crossorigin</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">&#34;&#34;</span><span style="color:#000;font-weight:bold">&gt;&lt;/</span><span style="color:#204a87;font-weight:bold">script</span><span style="color:#000;font-weight:bold">&gt;</span>
+</span></span></code></pre></div><h3 id="js">js</h3>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span><span style="color:#000;font-weight:bold">&lt;</span><span style="color:#204a87;font-weight:bold">script</span> <span style="color:#c4a000">src</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">&#34;https://unpkg.com/leaflet@1.9.1/dist/leaflet.js&#34;</span>
+</span></span><span style="display:flex;"><span>   <span style="color:#c4a000">integrity</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">&#34;sha256-NDI0K41gVbWqfkkaHj15IzU7PtMoelkzyKp8TOaFQ3s=&#34;</span>
+</span></span><span style="display:flex;"><span>   <span style="color:#c4a000">crossorigin</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">&#34;&#34;</span><span style="color:#000;font-weight:bold">&gt;&lt;/</span><span style="color:#204a87;font-weight:bold">script</span><span style="color:#000;font-weight:bold">&gt;</span>
+</span></span></code></pre></div><h3 id="div-en-el-html">Div en el html</h3>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span> <span style="color:#000;font-weight:bold">&lt;</span><span style="color:#204a87;font-weight:bold">div</span> <span style="color:#c4a000">id</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">&#34;map&#34;</span><span style="color:#000;font-weight:bold">&gt;&lt;/</span><span style="color:#204a87;font-weight:bold">div</span><span style="color:#000;font-weight:bold">&gt;</span>
+</span></span></code></pre></div><h3 id="altura-del-div-en-el-css">Altura del div en el css</h3>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-css" data-lang="css"><span style="display:flex;"><span><span style="color:#000;font-weight:bold">#</span><span style="color:#000">map</span> <span style="color:#000;font-weight:bold">{</span> <span style="color:#204a87;font-weight:bold">height</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">240</span><span style="color:#204a87;font-weight:bold">px</span><span style="color:#000;font-weight:bold">;</span> <span style="color:#000;font-weight:bold">}</span>
+</span></span></code></pre></div><h3 id="cargar-el-mapa-en-el-js">Cargar el mapa en el js</h3>
+<p>Si tenemos las variables <strong>lat</strong> y <strong>lon</strong> en en el <strong>frontmatter</strong> de la página con las coordenadas del mapa, podemos cargar el mapa con el siguiente código:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">var</span> <span style="color:#000">map</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">L</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">map</span><span style="color:#000;font-weight:bold">(</span><span style="color:#4e9a06">&#39;map&#39;</span><span style="color:#000;font-weight:bold">).</span><span style="color:#000">setView</span><span style="color:#000;font-weight:bold">([{{</span> <span style="color:#000;font-weight:bold">.</span><span style="color:#000">Params</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">lat</span> <span style="color:#000;font-weight:bold">}},</span> <span style="color:#000;font-weight:bold">{{</span> <span style="color:#000;font-weight:bold">.</span><span style="color:#000">Params</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">lon</span> <span style="color:#000;font-weight:bold">}}],</span> <span style="color:#0000cf;font-weight:bold">13</span><span style="color:#000;font-weight:bold">);</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#000">L</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">tileLayer</span><span style="color:#000;font-weight:bold">(</span><span style="color:#4e9a06">&#39;https://tile.openstreetmap.org/{z}/{x}/{y}.png&#39;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000;font-weight:bold">{</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#000">attribution</span><span style="color:#ce5c00;font-weight:bold">:</span> <span style="color:#4e9a06">&#39;&amp;copy; &lt;a href=&#34;https://www.openstreetmap.org/copyright&#34;&gt;OpenStreetMap&lt;/a&gt; contributors&#39;</span>
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">}).</span><span style="color:#000">addTo</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">map</span><span style="color:#000;font-weight:bold">);</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#000">L</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">marker</span><span style="color:#000;font-weight:bold">([{{</span> <span style="color:#000;font-weight:bold">.</span><span style="color:#000">Params</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">lat</span> <span style="color:#000;font-weight:bold">}},</span> <span style="color:#000;font-weight:bold">{{</span> <span style="color:#000;font-weight:bold">.</span><span style="color:#000">Params</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">lon</span> <span style="color:#000;font-weight:bold">}}</span>
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">]).</span><span style="color:#000">addTo</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">map</span><span style="color:#000;font-weight:bold">)</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#000;font-weight:bold">.</span><span style="color:#000">bindPopup</span><span style="color:#000;font-weight:bold">(</span><span style="color:#4e9a06">&#39;{{ .Title }}&#39;</span><span style="color:#000;font-weight:bold">);</span>
+</span></span></code></pre></div>
+	
+	
+	<div class="text-muted mt-5 pt-3 border-top">
+  Última modificación October 14, 2022: <a href="https://github.com/lmorillas/dwes/commit/96f81918867c02cc31daf508ce19ae1df098bb84">update (96f8191)</a>
+</div>
+
+</div>
+
+
+          </main>
+        </div>
+      </div>
+      
+<footer class="bg-dark py-5 row d-print-none">
+  <div class="container-fluid mx-sm-5">
+    <div class="row">
+      <div class="col-6 col-sm-4 text-xs-center order-sm-2">
+        
+      </div>
+      <div class="col-6 col-sm-4 text-right text-xs-center order-sm-3">
+        
+      </div>
+      <div class="col-12 col-sm-4 text-center py-2 order-sm-2">
+        <small class="text-white">&copy; 2022 @lmorillas Derechos reservados</small>
+        <small class="ml-1"><a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Política de privacidad</a></small>
+	
+		
+	
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+    integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+    crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.min.js"
+    integrity="sha512-UR25UO94eTnCVwjbXozyeVd6ZqpaAE9naiEUBK/A+QDbfSTQFhPGj5lOR6d8tsgbBk84Ggb5A3EkjsOgPRPcKA=="
+    crossorigin="anonymous"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/mermaid@8.13.4/dist/mermaid.min.js" integrity="sha512-JERecFUBbsm75UpkVheAuDOE8NdHjQBrPACfEQYPwvPG+fjgCpHAz1Jw2ci9EXmd3DdfiWth3O3CQvcfEg8gsA==" crossorigin="anonymous"></script>
+
+
+
+<style>
+.markmap > svg {
+  width: 100%;
+  height: 300px;
+}
+</style>
+<script>
+window.markmap = {
+  autoLoader: { manual: true },
+};
+</script>
+<script src="https://cdn.jsdelivr.net/npm/markmap-autoloader"></script>
+
+
+<script src='/js/tabpane-persist.js'></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script src="/hugo-tutorial/js/main.min.e0a752aa6c21a747d962a08f1eff7cc3567658032a6cbe09a650c335caf4674e.js" integrity="sha256-4KdSqmwhp0fZYqCPHv98w1Z2WAMqbL4JplDDNcr0Z04=" crossorigin="anonymous"></script>
+
+
+
+
+  </body>
+</html>

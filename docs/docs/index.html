@@ -1,0 +1,503 @@
+<!doctype html>
+<html lang="es" class="no-js">
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="generator" content="Hugo 0.102.3" />
+<link rel="alternate" type="application/rss&#43;xml" href="https://lmorillas.github.io/hugo-tutorial/docs/index.xml">
+<meta name="robots" content="index, follow">
+
+
+<link rel="shortcut icon" href="/hugo-tutorial/favicons/favicon.ico" >
+<link rel="apple-touch-icon" href="/hugo-tutorial/favicons/apple-touch-icon-180x180.png" sizes="180x180">
+<link rel="icon" type="image/png" href="/hugo-tutorial/favicons/favicon-16x16.png" sizes="16x16">
+<link rel="icon" type="image/png" href="/hugo-tutorial/favicons/favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="/hugo-tutorial/favicons/android-36x36.png" sizes="36x36">
+<link rel="icon" type="image/png" href="/hugo-tutorial/favicons/android-48x48.png" sizes="48x48">
+<link rel="icon" type="image/png" href="/hugo-tutorial/favicons/android-72x72.png" sizes="72x72">
+<link rel="icon" type="image/png" href="/hugo-tutorial/favicons/android-96x96.png" sizes="96x96">
+<link rel="icon" type="image/png" href="/hugo-tutorial/favicons/android-144x144.png" sizes="144x144">
+<link rel="icon" type="image/png" href="/hugo-tutorial/favicons/android-192x192.png" sizes="192x192">
+
+<title>Generadores de Sitios Estáticos | Webs estáticas con Hugo</title>
+<meta name="description" content="Introducción a la creación de sitios estáticos con Hugo
+">
+<meta property="og:title" content="Generadores de Sitios Estáticos" />
+<meta property="og:description" content="Introducción a la creación de sitios estáticos con Hugo
+" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://lmorillas.github.io/hugo-tutorial/docs/" /><meta property="og:site_name" content="Webs estáticas con Hugo" />
+
+<meta itemprop="name" content="Generadores de Sitios Estáticos">
+<meta itemprop="description" content="Introducción a la creación de sitios estáticos con Hugo
+"><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Generadores de Sitios Estáticos"/>
+<meta name="twitter:description" content="Introducción a la creación de sitios estáticos con Hugo
+"/>
+
+
+
+
+<link rel="preload" href="/hugo-tutorial/scss/main.min.6f9a61915ae86417164c61d275528c590ac6e5f9dadf5e49cacc7e18108a8014.css" as="style">
+<link href="/hugo-tutorial/scss/main.min.6f9a61915ae86417164c61d275528c590ac6e5f9dadf5e49cacc7e18108a8014.css" rel="stylesheet" integrity="">
+
+<script
+  src="https://code.jquery.com/jquery-3.6.0.min.js"
+  integrity="sha384-vtXRMe3mGCbOeY7l30aIg8H9p3GdeSe4IFlP6G8JMa7o7lXvnz3GFKzPxzJdPfGK"
+  crossorigin="anonymous"></script>
+
+  </head>
+  <body class="td-section">
+    <header>
+      
+<nav class="js-navbar-scroll navbar navbar-expand navbar-dark flex-column flex-md-row td-navbar">
+        <a class="navbar-brand" href="/hugo-tutorial/">
+		<span class="navbar-logo"></span><span class="font-weight-bold">Webs estáticas con Hugo</span>
+	</a>
+	<div class="td-navbar-nav-scroll ml-md-auto" id="main_navbar">
+		<ul class="navbar-nav mt-2 mt-lg-0">
+			
+			
+			
+			
+		</ul>
+	</div>
+	<div class="navbar-nav d-none d-lg-block"></div>
+</nav>
+
+    </header>
+    <div class="container-fluid td-outer">
+      <div class="td-main">
+        <div class="row flex-xl-nowrap">
+          <aside class="col-12 col-md-3 col-xl-2 td-sidebar d-print-none">
+            
+<div id="td-sidebar-menu" class="td-sidebar__inner">
+  <form class="td-sidebar__search d-flex align-items-center">
+    
+    <button class="btn btn-link td-sidebar__toggle d-md-none p-0 ml-3 fas fa-bars" type="button" data-toggle="collapse" data-target="#td-section-nav" aria-controls="td-section-nav" aria-expanded="false" aria-label="Toggle section navigation">
+    </button>
+  </form>
+  <nav class="collapse td-sidebar-nav foldable-nav" id="td-section-nav">
+    <ul class="td-sidebar-nav__section pr-md-3 ul-0">
+      <li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child active-path" id="m-hugo-tutorialdocs-li">
+  <a href="/hugo-tutorial/docs/" class="align-left pl-0 active td-sidebar-link td-sidebar-link__section tree-root" id="m-hugo-tutorialdocs"><span class="td-sidebar-nav-active-item">Generadores de Sitios Estáticos</span></a>
+  <ul class="ul-1">
+    <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-hugo-tutorialdocsweben1minuto-li">
+  <input type="checkbox" id="m-hugo-tutorialdocsweben1minuto-check"/>
+  <label for="m-hugo-tutorialdocsweben1minuto-check"><a href="/hugo-tutorial/docs/weben1minuto/" class="align-left pl-0  td-sidebar-link td-sidebar-link__page" id="m-hugo-tutorialdocsweben1minuto"><span class="">Mi primera web con Hugo</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-hugo-tutorialdocstareamarkdown-li">
+  <input type="checkbox" id="m-hugo-tutorialdocstareamarkdown-check"/>
+  <label for="m-hugo-tutorialdocstareamarkdown-check"><a href="/hugo-tutorial/docs/tareamarkdown/" class="align-left pl-0  td-sidebar-link td-sidebar-link__page" id="m-hugo-tutorialdocstareamarkdown"><span class="">Tarea Markdown</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-hugo-tutorialdocscontenido-li">
+  <input type="checkbox" id="m-hugo-tutorialdocscontenido-check"/>
+  <label for="m-hugo-tutorialdocscontenido-check"><a href="/hugo-tutorial/docs/contenido/" class="align-left pl-0  td-sidebar-link td-sidebar-link__page" id="m-hugo-tutorialdocscontenido"><span class="">Cómo añadir contenido</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-hugo-tutorialdocsnuevo_tema-li">
+  <input type="checkbox" id="m-hugo-tutorialdocsnuevo_tema-check"/>
+  <label for="m-hugo-tutorialdocsnuevo_tema-check"><a href="/hugo-tutorial/docs/nuevo_tema/" class="align-left pl-0  td-sidebar-link td-sidebar-link__page" id="m-hugo-tutorialdocsnuevo_tema"><span class="">Crear un tema</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-hugo-tutorialdocsmenus-li">
+  <input type="checkbox" id="m-hugo-tutorialdocsmenus-check"/>
+  <label for="m-hugo-tutorialdocsmenus-check"><a href="/hugo-tutorial/docs/menus/" class="align-left pl-0  td-sidebar-link td-sidebar-link__page" id="m-hugo-tutorialdocsmenus"><span class="">Menús</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-hugo-tutorialdocsimagenes-li">
+  <input type="checkbox" id="m-hugo-tutorialdocsimagenes-check"/>
+  <label for="m-hugo-tutorialdocsimagenes-check"><a href="/hugo-tutorial/docs/imagenes/" class="align-left pl-0  td-sidebar-link td-sidebar-link__page" id="m-hugo-tutorialdocsimagenes"><span class="">Imágenes</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-hugo-tutorialdocstemplates-li">
+  <input type="checkbox" id="m-hugo-tutorialdocstemplates-check"/>
+  <label for="m-hugo-tutorialdocstemplates-check"><a href="/hugo-tutorial/docs/templates/" class="align-left pl-0  td-sidebar-link td-sidebar-link__page" id="m-hugo-tutorialdocstemplates"><span class="">Plantillas</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-hugo-tutorialdocsshortcodes-li">
+  <input type="checkbox" id="m-hugo-tutorialdocsshortcodes-check"/>
+  <label for="m-hugo-tutorialdocsshortcodes-check"><a href="/hugo-tutorial/docs/shortcodes/" class="align-left pl-0  td-sidebar-link td-sidebar-link__page" id="m-hugo-tutorialdocsshortcodes"><span class="">Shortcodes</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-hugo-tutorialdocsmapas_leaflet-li">
+  <input type="checkbox" id="m-hugo-tutorialdocsmapas_leaflet-check"/>
+  <label for="m-hugo-tutorialdocsmapas_leaflet-check"><a href="/hugo-tutorial/docs/mapas_leaflet/" class="align-left pl-0  td-sidebar-link td-sidebar-link__page" id="m-hugo-tutorialdocsmapas_leaflet"><span class="">Mapas Leaflet</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-hugo-tutorialdocsdatos-li">
+  <input type="checkbox" id="m-hugo-tutorialdocsdatos-check"/>
+  <label for="m-hugo-tutorialdocsdatos-check"><a href="/hugo-tutorial/docs/datos/" class="align-left pl-0  td-sidebar-link td-sidebar-link__page" id="m-hugo-tutorialdocsdatos"><span class="">Trabajo con datos</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-hugo-tutorialdocsbusqueda-li">
+  <input type="checkbox" id="m-hugo-tutorialdocsbusqueda-check"/>
+  <label for="m-hugo-tutorialdocsbusqueda-check"><a href="/hugo-tutorial/docs/busqueda/" class="align-left pl-0  td-sidebar-link td-sidebar-link__page" id="m-hugo-tutorialdocsbusqueda"><span class="">Búsqueda de páginas</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-hugo-tutorialdocsformulario-li">
+  <input type="checkbox" id="m-hugo-tutorialdocsformulario-check"/>
+  <label for="m-hugo-tutorialdocsformulario-check"><a href="/hugo-tutorial/docs/formulario/" class="align-left pl-0  td-sidebar-link td-sidebar-link__page" id="m-hugo-tutorialdocsformulario"><span class="">Inserción de formularios dinámicos</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-hugo-tutorialdocsnotas-repaso-li">
+  <input type="checkbox" id="m-hugo-tutorialdocsnotas-repaso-check"/>
+  <label for="m-hugo-tutorialdocsnotas-repaso-check"><a href="/hugo-tutorial/docs/notas-repaso/" class="align-left pl-0  td-sidebar-link td-sidebar-link__page" id="m-hugo-tutorialdocsnotas-repaso"><span class="">Algunas notas de repaso</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-hugo-tutorialdocsprivacidad-li">
+  <input type="checkbox" id="m-hugo-tutorialdocsprivacidad-check"/>
+  <label for="m-hugo-tutorialdocsprivacidad-check"><a href="/hugo-tutorial/docs/privacidad/" class="align-left pl-0  td-sidebar-link td-sidebar-link__page" id="m-hugo-tutorialdocsprivacidad"><span class="">Configuración GDPR</span></a></label>
+  
+</li>
+  </ul>
+</li>
+    </ul>
+  </nav>
+</div>
+
+          </aside>
+          <aside class="d-none d-xl-block col-xl-2 td-sidebar-toc d-print-none">
+            
+            
+
+
+<div class="td-toc"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#por-qué-un-generador-de-sitios-estáticos">¿Por qué un generador de sitios estáticos?</a></li>
+    <li><a href="#arquitectura-jamstack">Arquitectura JAMSTACK</a>
+      <ul>
+        <li><a href="#qué-es-jamstack">¿Qué es JAMSTACK?</a></li>
+      </ul>
+    </li>
+    <li><a href="#generadores-de-sitios-estáticos">Generadores de sitios estáticos</a></li>
+    <li><a href="#ejemplos">Ejemplos</a></li>
+    <li><a href="#instalación">Instalación</a></li>
+    <li><a href="#primeros-pasos">Primeros pasos</a></li>
+  </ul>
+</nav></div>
+
+
+
+            
+
+	
+		
+
+
+
+  
+  
+
+	
+		
+
+
+
+  
+  
+
+	
+
+          </aside>
+          <main class="col-12 col-md-9 col-xl-8 pl-md-5" role="main">
+            
+  
+
+            
+            
+<div class="td-content">
+	<h1>Generadores de Sitios Estáticos</h1>
+  <div class="lead">Introducción a la creación de sitios estáticos con Hugo</div>
+	<header class="article-meta">
+		
+
+  
+    
+
+
+  
+    
+
+
+  
+
+		
+	</header>
+	
+
+<div class="pageinfo pageinfo-primary">
+<p>Introducción a la generación de sitios web con HUGO</p>
+
+</div>
+
+<h2 id="por-qué-un-generador-de-sitios-estáticos">¿Por qué un generador de sitios estáticos?</h2>
+<ul>
+<li>Rapidez</li>
+<li>Seguridad</li>
+<li>Eficiencia</li>
+<li>Consistencia de contenidos y formatos</li>
+</ul>
+<h2 id="arquitectura-jamstack">Arquitectura JAMSTACK</h2>
+<h3 id="qué-es-jamstack">¿Qué es JAMSTACK?</h3>
+<ul>
+<li>JAMstack is a modern web development architecture based on client-side JavaScript, reusable APIs, and prebuilt Markup.</li>
+<li><a href="https://jamstack.org/">https://jamstack.org/</a></li>
+</ul>
+<p><img src="https://blog.openreplay.com/static/5d89407f8de6ba62afa35daec25043fe/1a152/img3.png" alt="Tradicional"></p>
+<p><img src="https://blog.openreplay.com/static/12870361e84816a70cbd0a174338fa61/1a152/img4.png" alt="Jamstack"></p>
+<p><img src="https://blog.openreplay.com/static/5d89407f8de6ba62afa35daec25043fe/1a152/img5.png" alt="Jamstack"></p>
+<h2 id="generadores-de-sitios-estáticos">Generadores de sitios estáticos</h2>
+<ul>
+<li><a href="https://jamstack.org/generators/">Lista de generdores</a></li>
+<li>Nosotros usaremos <a href="https://gohugo.io/">HUGO</a></li>
+</ul>
+<h2 id="ejemplos">Ejemplos</h2>
+<ul>
+<li><a href="https://getbootstrap.com">https://getbootstrap.com</a></li>
+<li><a href="https://letsencrypt.org">https://letsencrypt.org</a></li>
+<li><a href="https://www.smashingmagazine.com">https://www.smashingmagazine.com</a></li>
+</ul>
+<h2 id="instalación">Instalación</h2>
+<p>Tiene instaladores para mac, windows y linux:</p>
+<ul>
+<li><a href="https://gohugo.io/getting-started/quick-start/#step-1-install-hugo">https://gohugo.io/getting-started/quick-start/#step-1-install-hugo</a></li>
+</ul>
+
+
+<div class="pageinfo pageinfo-primary">
+<p>Recuerda:</p>
+<ul>
+<li>Instalar</li>
+<li>Configurar el <strong>path</strong> del sistema</li>
+</ul>
+
+</div>
+
+<h2 id="primeros-pasos">Primeros pasos</h2>
+
+
+<div class="alert alert-primary" role="alert">
+<h4 class="alert-heading">Crear nuevo sitio</h4>
+
+    
+
+</div>
+
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ hugo new site &lt;nombre_del_sitio&gt;
+</span></span></code></pre></div>
+
+<div class="alert alert-primary" role="alert">
+<h4 class="alert-heading">Crear contenido</h4>
+
+    
+
+</div>
+
+<p>Repaso de sintaxis <strong>markdown</strong>:</p>
+<ul>
+<li><a href="https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet">https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet</a></li>
+<li><a href="https://programminghistorian.org/es/lecciones/introduccion-a-markdown">https://programminghistorian.org/es/lecciones/introduccion-a-markdown</a></li>
+</ul>
+
+        <div class="section-index">
+    
+    
+    
+    
+    
+    
+    
+    
+    <hr class="panel-line">
+        
+            
+            <div class="entry">
+                <h5>
+                    <a href="/hugo-tutorial/docs/weben1minuto/">Mi primera web con Hugo</a>
+                </h5>
+                <p></p>
+            </div>
+        
+            
+            <div class="entry">
+                <h5>
+                    <a href="/hugo-tutorial/docs/tareamarkdown/">Tarea Markdown</a>
+                </h5>
+                <p></p>
+            </div>
+        
+            
+            <div class="entry">
+                <h5>
+                    <a href="/hugo-tutorial/docs/contenido/">Cómo añadir contenido</a>
+                </h5>
+                <p></p>
+            </div>
+        
+            
+            <div class="entry">
+                <h5>
+                    <a href="/hugo-tutorial/docs/nuevo_tema/">Crear un tema</a>
+                </h5>
+                <p></p>
+            </div>
+        
+            
+            <div class="entry">
+                <h5>
+                    <a href="/hugo-tutorial/docs/menus/">Menús</a>
+                </h5>
+                <p></p>
+            </div>
+        
+            
+            <div class="entry">
+                <h5>
+                    <a href="/hugo-tutorial/docs/imagenes/">Imágenes</a>
+                </h5>
+                <p></p>
+            </div>
+        
+            
+            <div class="entry">
+                <h5>
+                    <a href="/hugo-tutorial/docs/templates/">Plantillas</a>
+                </h5>
+                <p></p>
+            </div>
+        
+            
+            <div class="entry">
+                <h5>
+                    <a href="/hugo-tutorial/docs/shortcodes/">Shortcodes</a>
+                </h5>
+                <p></p>
+            </div>
+        
+            
+            <div class="entry">
+                <h5>
+                    <a href="/hugo-tutorial/docs/mapas_leaflet/">Mapas Leaflet</a>
+                </h5>
+                <p></p>
+            </div>
+        
+            
+            <div class="entry">
+                <h5>
+                    <a href="/hugo-tutorial/docs/datos/">Trabajo con datos</a>
+                </h5>
+                <p></p>
+            </div>
+        
+            
+            <div class="entry">
+                <h5>
+                    <a href="/hugo-tutorial/docs/busqueda/">Búsqueda de páginas</a>
+                </h5>
+                <p></p>
+            </div>
+        
+            
+            <div class="entry">
+                <h5>
+                    <a href="/hugo-tutorial/docs/formulario/">Inserción de formularios dinámicos</a>
+                </h5>
+                <p></p>
+            </div>
+        
+            
+            <div class="entry">
+                <h5>
+                    <a href="/hugo-tutorial/docs/notas-repaso/">Algunas notas de repaso</a>
+                </h5>
+                <p></p>
+            </div>
+        
+            
+            <div class="entry">
+                <h5>
+                    <a href="/hugo-tutorial/docs/privacidad/">Configuración GDPR</a>
+                </h5>
+                <p></p>
+            </div>
+        
+    
+</div>
+
+	
+	
+	<div class="text-muted mt-5 pt-3 border-top">
+  Última modificación October 14, 2022: <a href="https://github.com/lmorillas/dwes/commit/96f81918867c02cc31daf508ce19ae1df098bb84">update (96f8191)</a>
+</div>
+
+</div>
+
+          </main>
+        </div>
+      </div>
+      
+<footer class="bg-dark py-5 row d-print-none">
+  <div class="container-fluid mx-sm-5">
+    <div class="row">
+      <div class="col-6 col-sm-4 text-xs-center order-sm-2">
+        
+      </div>
+      <div class="col-6 col-sm-4 text-right text-xs-center order-sm-3">
+        
+      </div>
+      <div class="col-12 col-sm-4 text-center py-2 order-sm-2">
+        <small class="text-white">&copy; 2022 @lmorillas Derechos reservados</small>
+        <small class="ml-1"><a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Política de privacidad</a></small>
+	
+		
+	
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+    integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+    crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.min.js"
+    integrity="sha512-UR25UO94eTnCVwjbXozyeVd6ZqpaAE9naiEUBK/A+QDbfSTQFhPGj5lOR6d8tsgbBk84Ggb5A3EkjsOgPRPcKA=="
+    crossorigin="anonymous"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/mermaid@8.13.4/dist/mermaid.min.js" integrity="sha512-JERecFUBbsm75UpkVheAuDOE8NdHjQBrPACfEQYPwvPG+fjgCpHAz1Jw2ci9EXmd3DdfiWth3O3CQvcfEg8gsA==" crossorigin="anonymous"></script>
+
+
+
+<style>
+.markmap > svg {
+  width: 100%;
+  height: 300px;
+}
+</style>
+<script>
+window.markmap = {
+  autoLoader: { manual: true },
+};
+</script>
+<script src="https://cdn.jsdelivr.net/npm/markmap-autoloader"></script>
+
+
+<script src='/js/tabpane-persist.js'></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script src="/hugo-tutorial/js/main.min.e0a752aa6c21a747d962a08f1eff7cc3567658032a6cbe09a650c335caf4674e.js" integrity="sha256-4KdSqmwhp0fZYqCPHv98w1Z2WAMqbL4JplDDNcr0Z04=" crossorigin="anonymous"></script>
+
+
+
+
+  </body>
+</html>

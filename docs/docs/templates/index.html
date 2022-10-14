@@ -1,0 +1,451 @@
+<!doctype html>
+<html lang="es" class="no-js">
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="generator" content="Hugo 0.102.3" />
+<meta name="robots" content="index, follow">
+
+
+<link rel="shortcut icon" href="/hugo-tutorial/favicons/favicon.ico" >
+<link rel="apple-touch-icon" href="/hugo-tutorial/favicons/apple-touch-icon-180x180.png" sizes="180x180">
+<link rel="icon" type="image/png" href="/hugo-tutorial/favicons/favicon-16x16.png" sizes="16x16">
+<link rel="icon" type="image/png" href="/hugo-tutorial/favicons/favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="/hugo-tutorial/favicons/android-36x36.png" sizes="36x36">
+<link rel="icon" type="image/png" href="/hugo-tutorial/favicons/android-48x48.png" sizes="48x48">
+<link rel="icon" type="image/png" href="/hugo-tutorial/favicons/android-72x72.png" sizes="72x72">
+<link rel="icon" type="image/png" href="/hugo-tutorial/favicons/android-96x96.png" sizes="96x96">
+<link rel="icon" type="image/png" href="/hugo-tutorial/favicons/android-144x144.png" sizes="144x144">
+<link rel="icon" type="image/png" href="/hugo-tutorial/favicons/android-192x192.png" sizes="192x192">
+
+<title>Plantillas | Webs estáticas con Hugo</title>
+<meta name="description" content="
+
+
+Algunas notas sobre el trabajo con las plantillas:
+
+Sintaxis básica de las plantillas en Hugo
+Organización de las plantillas. Directorio layout …">
+<meta property="og:title" content="Plantillas" />
+<meta property="og:description" content="Algunas notas sobre el trabajo con las plantillas:
+Sintaxis básica de las plantillas en Hugo Organización de las plantillas. Directorio layout Modificación de una plantilla Creación de plantillas Documentación: https://gohugo.io/templates/
+Sintaxis básica Acceso a variables predefinidas:
+{{ .Title }} {{ .Params.bar }} {{ if or (isset .Params &#34;alt&#34;) (isset .Params &#34;caption&#34;) }} Caption {{ end }} &lt;title&gt;{{ .Title }}&lt;/title&gt; Partial Incluye un fragmento en una plantilla para no tener que repetirlo:" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://lmorillas.github.io/hugo-tutorial/docs/templates/" /><meta property="article:section" content="docs" />
+<meta property="article:published_time" content="2017-01-05T00:00:00+00:00" />
+<meta property="article:modified_time" content="2022-10-14T10:07:55+02:00" /><meta property="og:site_name" content="Webs estáticas con Hugo" />
+
+<meta itemprop="name" content="Plantillas">
+<meta itemprop="description" content="Algunas notas sobre el trabajo con las plantillas:
+Sintaxis básica de las plantillas en Hugo Organización de las plantillas. Directorio layout Modificación de una plantilla Creación de plantillas Documentación: https://gohugo.io/templates/
+Sintaxis básica Acceso a variables predefinidas:
+{{ .Title }} {{ .Params.bar }} {{ if or (isset .Params &#34;alt&#34;) (isset .Params &#34;caption&#34;) }} Caption {{ end }} &lt;title&gt;{{ .Title }}&lt;/title&gt; Partial Incluye un fragmento en una plantilla para no tener que repetirlo:"><meta itemprop="datePublished" content="2017-01-05T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2022-10-14T10:07:55+02:00" />
+<meta itemprop="wordCount" content="441">
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Plantillas"/>
+<meta name="twitter:description" content="Algunas notas sobre el trabajo con las plantillas:
+Sintaxis básica de las plantillas en Hugo Organización de las plantillas. Directorio layout Modificación de una plantilla Creación de plantillas Documentación: https://gohugo.io/templates/
+Sintaxis básica Acceso a variables predefinidas:
+{{ .Title }} {{ .Params.bar }} {{ if or (isset .Params &#34;alt&#34;) (isset .Params &#34;caption&#34;) }} Caption {{ end }} &lt;title&gt;{{ .Title }}&lt;/title&gt; Partial Incluye un fragmento en una plantilla para no tener que repetirlo:"/>
+
+
+
+
+<link rel="preload" href="/hugo-tutorial/scss/main.min.6f9a61915ae86417164c61d275528c590ac6e5f9dadf5e49cacc7e18108a8014.css" as="style">
+<link href="/hugo-tutorial/scss/main.min.6f9a61915ae86417164c61d275528c590ac6e5f9dadf5e49cacc7e18108a8014.css" rel="stylesheet" integrity="">
+
+<script
+  src="https://code.jquery.com/jquery-3.6.0.min.js"
+  integrity="sha384-vtXRMe3mGCbOeY7l30aIg8H9p3GdeSe4IFlP6G8JMa7o7lXvnz3GFKzPxzJdPfGK"
+  crossorigin="anonymous"></script>
+
+  </head>
+  <body class="td-page">
+    <header>
+      
+<nav class="js-navbar-scroll navbar navbar-expand navbar-dark flex-column flex-md-row td-navbar">
+        <a class="navbar-brand" href="/hugo-tutorial/">
+		<span class="navbar-logo"></span><span class="font-weight-bold">Webs estáticas con Hugo</span>
+	</a>
+	<div class="td-navbar-nav-scroll ml-md-auto" id="main_navbar">
+		<ul class="navbar-nav mt-2 mt-lg-0">
+			
+			
+			
+			
+		</ul>
+	</div>
+	<div class="navbar-nav d-none d-lg-block"></div>
+</nav>
+
+    </header>
+    <div class="container-fluid td-outer">
+      <div class="td-main">
+        <div class="row flex-xl-nowrap">
+          <aside class="col-12 col-md-3 col-xl-2 td-sidebar d-print-none">
+            
+<div id="td-sidebar-menu" class="td-sidebar__inner">
+  <form class="td-sidebar__search d-flex align-items-center">
+    
+    <button class="btn btn-link td-sidebar__toggle d-md-none p-0 ml-3 fas fa-bars" type="button" data-toggle="collapse" data-target="#td-section-nav" aria-controls="td-section-nav" aria-expanded="false" aria-label="Toggle section navigation">
+    </button>
+  </form>
+  <nav class="collapse td-sidebar-nav foldable-nav" id="td-section-nav">
+    <ul class="td-sidebar-nav__section pr-md-3 ul-0">
+      <li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child active-path" id="m-hugo-tutorialdocs-li">
+  <a href="/hugo-tutorial/docs/" class="align-left pl-0 td-sidebar-link td-sidebar-link__section tree-root" id="m-hugo-tutorialdocs"><span class="">Generadores de Sitios Estáticos</span></a>
+  <ul class="ul-1">
+    <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-hugo-tutorialdocsweben1minuto-li">
+  <input type="checkbox" id="m-hugo-tutorialdocsweben1minuto-check"/>
+  <label for="m-hugo-tutorialdocsweben1minuto-check"><a href="/hugo-tutorial/docs/weben1minuto/" class="align-left pl-0  td-sidebar-link td-sidebar-link__page" id="m-hugo-tutorialdocsweben1minuto"><span class="">Mi primera web con Hugo</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-hugo-tutorialdocstareamarkdown-li">
+  <input type="checkbox" id="m-hugo-tutorialdocstareamarkdown-check"/>
+  <label for="m-hugo-tutorialdocstareamarkdown-check"><a href="/hugo-tutorial/docs/tareamarkdown/" class="align-left pl-0  td-sidebar-link td-sidebar-link__page" id="m-hugo-tutorialdocstareamarkdown"><span class="">Tarea Markdown</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-hugo-tutorialdocscontenido-li">
+  <input type="checkbox" id="m-hugo-tutorialdocscontenido-check"/>
+  <label for="m-hugo-tutorialdocscontenido-check"><a href="/hugo-tutorial/docs/contenido/" class="align-left pl-0  td-sidebar-link td-sidebar-link__page" id="m-hugo-tutorialdocscontenido"><span class="">Cómo añadir contenido</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-hugo-tutorialdocsnuevo_tema-li">
+  <input type="checkbox" id="m-hugo-tutorialdocsnuevo_tema-check"/>
+  <label for="m-hugo-tutorialdocsnuevo_tema-check"><a href="/hugo-tutorial/docs/nuevo_tema/" class="align-left pl-0  td-sidebar-link td-sidebar-link__page" id="m-hugo-tutorialdocsnuevo_tema"><span class="">Crear un tema</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-hugo-tutorialdocsmenus-li">
+  <input type="checkbox" id="m-hugo-tutorialdocsmenus-check"/>
+  <label for="m-hugo-tutorialdocsmenus-check"><a href="/hugo-tutorial/docs/menus/" class="align-left pl-0  td-sidebar-link td-sidebar-link__page" id="m-hugo-tutorialdocsmenus"><span class="">Menús</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-hugo-tutorialdocsimagenes-li">
+  <input type="checkbox" id="m-hugo-tutorialdocsimagenes-check"/>
+  <label for="m-hugo-tutorialdocsimagenes-check"><a href="/hugo-tutorial/docs/imagenes/" class="align-left pl-0  td-sidebar-link td-sidebar-link__page" id="m-hugo-tutorialdocsimagenes"><span class="">Imágenes</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child active-path" id="m-hugo-tutorialdocstemplates-li">
+  <input type="checkbox" id="m-hugo-tutorialdocstemplates-check" checked/>
+  <label for="m-hugo-tutorialdocstemplates-check"><a href="/hugo-tutorial/docs/templates/" class="align-left pl-0  active td-sidebar-link td-sidebar-link__page" id="m-hugo-tutorialdocstemplates"><span class="td-sidebar-nav-active-item">Plantillas</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-hugo-tutorialdocsshortcodes-li">
+  <input type="checkbox" id="m-hugo-tutorialdocsshortcodes-check"/>
+  <label for="m-hugo-tutorialdocsshortcodes-check"><a href="/hugo-tutorial/docs/shortcodes/" class="align-left pl-0  td-sidebar-link td-sidebar-link__page" id="m-hugo-tutorialdocsshortcodes"><span class="">Shortcodes</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-hugo-tutorialdocsmapas_leaflet-li">
+  <input type="checkbox" id="m-hugo-tutorialdocsmapas_leaflet-check"/>
+  <label for="m-hugo-tutorialdocsmapas_leaflet-check"><a href="/hugo-tutorial/docs/mapas_leaflet/" class="align-left pl-0  td-sidebar-link td-sidebar-link__page" id="m-hugo-tutorialdocsmapas_leaflet"><span class="">Mapas Leaflet</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-hugo-tutorialdocsdatos-li">
+  <input type="checkbox" id="m-hugo-tutorialdocsdatos-check"/>
+  <label for="m-hugo-tutorialdocsdatos-check"><a href="/hugo-tutorial/docs/datos/" class="align-left pl-0  td-sidebar-link td-sidebar-link__page" id="m-hugo-tutorialdocsdatos"><span class="">Trabajo con datos</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-hugo-tutorialdocsbusqueda-li">
+  <input type="checkbox" id="m-hugo-tutorialdocsbusqueda-check"/>
+  <label for="m-hugo-tutorialdocsbusqueda-check"><a href="/hugo-tutorial/docs/busqueda/" class="align-left pl-0  td-sidebar-link td-sidebar-link__page" id="m-hugo-tutorialdocsbusqueda"><span class="">Búsqueda de páginas</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-hugo-tutorialdocsformulario-li">
+  <input type="checkbox" id="m-hugo-tutorialdocsformulario-check"/>
+  <label for="m-hugo-tutorialdocsformulario-check"><a href="/hugo-tutorial/docs/formulario/" class="align-left pl-0  td-sidebar-link td-sidebar-link__page" id="m-hugo-tutorialdocsformulario"><span class="">Inserción de formularios dinámicos</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-hugo-tutorialdocsnotas-repaso-li">
+  <input type="checkbox" id="m-hugo-tutorialdocsnotas-repaso-check"/>
+  <label for="m-hugo-tutorialdocsnotas-repaso-check"><a href="/hugo-tutorial/docs/notas-repaso/" class="align-left pl-0  td-sidebar-link td-sidebar-link__page" id="m-hugo-tutorialdocsnotas-repaso"><span class="">Algunas notas de repaso</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-hugo-tutorialdocsprivacidad-li">
+  <input type="checkbox" id="m-hugo-tutorialdocsprivacidad-check"/>
+  <label for="m-hugo-tutorialdocsprivacidad-check"><a href="/hugo-tutorial/docs/privacidad/" class="align-left pl-0  td-sidebar-link td-sidebar-link__page" id="m-hugo-tutorialdocsprivacidad"><span class="">Configuración GDPR</span></a></label>
+  
+</li>
+  </ul>
+</li>
+    </ul>
+  </nav>
+</div>
+
+          </aside>
+          <aside class="d-none d-xl-block col-xl-2 td-sidebar-toc d-print-none">
+            
+            
+
+
+<div class="td-toc"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#sintaxis-básica">Sintaxis básica</a></li>
+    <li><a href="#partial">Partial</a></li>
+    <li><a href="#plantillas-base-y-bloques">Plantillas base y bloques</a></li>
+    <li><a href="#funciones">Funciones</a></li>
+    <li><a href="#parámetros-de-las-páginas">Parámetros de las páginas</a></li>
+    <li><a href="#uso-de-la-configuración-del-sitio">Uso de la configuración del sitio</a></li>
+    <li><a href="#uso-de-datos-de-la-página">Uso de datos de la página</a></li>
+  </ul>
+</nav></div>
+
+
+
+            
+
+	
+		
+
+
+
+  
+  
+
+	
+		
+
+
+
+  
+  
+
+	
+
+          </aside>
+          <main class="col-12 col-md-9 col-xl-8 pl-md-5" role="main">
+            
+  
+
+            
+            
+<div class="td-content">
+	<h1>Plantillas</h1>
+	
+	<header class="article-meta">
+		
+
+  
+    
+
+
+  
+    
+
+
+  
+
+		
+	</header>    
+	
+
+<div class="pageinfo pageinfo-primary">
+<p>Algunas notas sobre el trabajo con las plantillas:</p>
+<ul>
+<li>Sintaxis básica de las plantillas en Hugo</li>
+<li>Organización de las plantillas. Directorio <code>layout</code></li>
+<li>Modificación de una plantilla</li>
+<li>Creación de plantillas</li>
+</ul>
+<p><strong>Documentación:</strong>  <a href="https://gohugo.io/templates/">https://gohugo.io/templates/</a></p>
+
+</div>
+
+<h2 id="sintaxis-básica">Sintaxis básica</h2>
+<p>Acceso a variables predefinidas:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go-html-template" data-lang="go-html-template"><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">{{</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#c4a000">.Title</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#8f5902;font-style:italic">}}</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">{{</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#c4a000">.Params.bar</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#8f5902;font-style:italic">}}</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">{{</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">if</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">or</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">isset</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#c4a000">.Params</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#34;alt&#34;</span><span style="color:#ce5c00;font-weight:bold">)</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">isset</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#c4a000">.Params</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#34;caption&#34;</span><span style="color:#ce5c00;font-weight:bold">)</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#8f5902;font-style:italic">}}</span> Caption <span style="color:#8f5902;font-style:italic">{{</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">end</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#8f5902;font-style:italic">}}</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">&lt;</span><span style="color:#204a87;font-weight:bold">title</span><span style="color:#000;font-weight:bold">&gt;</span><span style="color:#8f5902;font-style:italic">{{</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#c4a000">.Title</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#8f5902;font-style:italic">}}</span><span style="color:#000;font-weight:bold">&lt;/</span><span style="color:#204a87;font-weight:bold">title</span><span style="color:#000;font-weight:bold">&gt;</span>
+</span></span></code></pre></div><h2 id="partial">Partial</h2>
+<p>Incluye un fragmento en una plantilla para no tener que repetirlo:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go-html-template" data-lang="go-html-template"><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">{{</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">partial</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#34;&lt;PATH&gt;/&lt;PARTIAL&gt;.&lt;EXTENSION&gt;&#34;</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#c4a000">.</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#8f5902;font-style:italic">}}</span>.
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span># Por ejemplo: layouts/partials/header.html partial
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">{{</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">partial</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#34;header.html&#34;</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#c4a000">.</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#8f5902;font-style:italic">}}</span>
+</span></span></code></pre></div>
+
+<div class="alert alert-danger" role="alert">
+<h4 class="alert-heading">Importante</h4>
+
+    Los partials nos ayudan a reutilizar el código y a no repetir fragmentos.
+
+</div>
+
+<h2 id="plantillas-base-y-bloques">Plantillas base y bloques</h2>
+<p><a href="https://gohugo.io/templates/base/">https://gohugo.io/templates/base/</a></p>
+<p><code>layouts/_default/baseof.html</code></p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">&lt;!DOCTYPE html&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">&lt;</span><span style="color:#204a87;font-weight:bold">html</span><span style="color:#000;font-weight:bold">&gt;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#000;font-weight:bold">&lt;</span><span style="color:#204a87;font-weight:bold">head</span><span style="color:#000;font-weight:bold">&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#000;font-weight:bold">&lt;</span><span style="color:#204a87;font-weight:bold">meta</span> <span style="color:#c4a000">charset</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">&#34;utf-8&#34;</span><span style="color:#000;font-weight:bold">&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#000;font-weight:bold">&lt;</span><span style="color:#204a87;font-weight:bold">title</span><span style="color:#000;font-weight:bold">&gt;</span>{{ block &#34;title&#34; . }}
+</span></span><span style="display:flex;"><span>      <span style="color:#8f5902;font-style:italic">&lt;!-- Blocks may include default content. --&gt;</span>
+</span></span><span style="display:flex;"><span>      {{ .Site.Title }}
+</span></span><span style="display:flex;"><span>    {{ end }}<span style="color:#000;font-weight:bold">&lt;/</span><span style="color:#204a87;font-weight:bold">title</span><span style="color:#000;font-weight:bold">&gt;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#000;font-weight:bold">&lt;/</span><span style="color:#204a87;font-weight:bold">head</span><span style="color:#000;font-weight:bold">&gt;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#000;font-weight:bold">&lt;</span><span style="color:#204a87;font-weight:bold">body</span><span style="color:#000;font-weight:bold">&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#8f5902;font-style:italic">&lt;!-- Code that all your templates share, like a header --&gt;</span>
+</span></span><span style="display:flex;"><span>    {{ block &#34;main&#34; . }}
+</span></span><span style="display:flex;"><span>      <span style="color:#8f5902;font-style:italic">&lt;!-- The part of the page that begins to differ between templates --&gt;</span>
+</span></span><span style="display:flex;"><span>    {{ end }}
+</span></span><span style="display:flex;"><span>    {{ block &#34;footer&#34; . }}
+</span></span><span style="display:flex;"><span>    <span style="color:#8f5902;font-style:italic">&lt;!-- More shared code, perhaps a footer but that can be overridden if need be in  --&gt;</span>
+</span></span><span style="display:flex;"><span>    {{ end }}
+</span></span><span style="display:flex;"><span>  <span style="color:#000;font-weight:bold">&lt;/</span><span style="color:#204a87;font-weight:bold">body</span><span style="color:#000;font-weight:bold">&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">&lt;/</span><span style="color:#204a87;font-weight:bold">html</span><span style="color:#000;font-weight:bold">&gt;</span>
+</span></span></code></pre></div><p><code>layouts/_default/single.html</code></p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go-html-template" data-lang="go-html-template"><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">{{</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">define</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#34;title&#34;</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#8f5902;font-style:italic">}}</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#8f5902;font-style:italic">&lt;!-- Sobreescribe el valor de  baseof.html --&gt;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#8f5902;font-style:italic">{{</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#c4a000">.Title</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#8f5902;font-style:italic">}}</span> <span style="color:#ce5c00">&amp;ndash;</span> <span style="color:#8f5902;font-style:italic">{{</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#c4a000">.Site.Title</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#8f5902;font-style:italic">}}</span>
+</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">{{</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">end</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#8f5902;font-style:italic">}}</span>
+</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">{{</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">define</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#34;main&#34;</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#8f5902;font-style:italic">}}</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#000;font-weight:bold">&lt;</span><span style="color:#204a87;font-weight:bold">h1</span><span style="color:#000;font-weight:bold">&gt;</span><span style="color:#8f5902;font-style:italic">{{</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#c4a000">.Title</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#8f5902;font-style:italic">}}</span><span style="color:#000;font-weight:bold">&lt;/</span><span style="color:#204a87;font-weight:bold">h1</span><span style="color:#000;font-weight:bold">&gt;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#8f5902;font-style:italic">{{</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#c4a000">.Content</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#8f5902;font-style:italic">}}</span>
+</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">{{</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">end</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#8f5902;font-style:italic">}}</span>
+</span></span></code></pre></div><h2 id="funciones">Funciones</h2>
+<p><a href="https://gohugo.io/templates/introduction/">https://gohugo.io/templates/introduction/</a></p>
+<h2 id="parámetros-de-las-páginas">Parámetros de las páginas</h2>
+<p><a href="https://gohugo.io/templates/introduction/#use-content-page-parameters">https://gohugo.io/templates/introduction/#use-content-page-parameters</a></p>
+<p>Podemos usar datos escritos en el <strong>front-matter</strong> de la página desde la plantilla:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go-html-template" data-lang="go-html-template"><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">{{</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">if</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">not</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#c4a000">.Params.notoc</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#8f5902;font-style:italic">}}</span>
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">&lt;</span><span style="color:#204a87;font-weight:bold">aside</span><span style="color:#000;font-weight:bold">&gt;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#000;font-weight:bold">&lt;</span><span style="color:#204a87;font-weight:bold">header</span><span style="color:#000;font-weight:bold">&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#000;font-weight:bold">&lt;</span><span style="color:#204a87;font-weight:bold">a</span> <span style="color:#c4a000">href</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">&#34;#</span><span style="color:#8f5902;font-style:italic">{{</span><span style="color:#c4a000">.Title</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">|</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">urlize</span><span style="color:#8f5902;font-style:italic">}}</span><span style="color:#4e9a06">&#34;</span><span style="color:#000;font-weight:bold">&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#000;font-weight:bold">&lt;</span><span style="color:#204a87;font-weight:bold">h3</span><span style="color:#000;font-weight:bold">&gt;</span><span style="color:#8f5902;font-style:italic">{{</span><span style="color:#c4a000">.Title</span><span style="color:#8f5902;font-style:italic">}}</span><span style="color:#000;font-weight:bold">&lt;/</span><span style="color:#204a87;font-weight:bold">h3</span><span style="color:#000;font-weight:bold">&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#000;font-weight:bold">&lt;/</span><span style="color:#204a87;font-weight:bold">a</span><span style="color:#000;font-weight:bold">&gt;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#000;font-weight:bold">&lt;/</span><span style="color:#204a87;font-weight:bold">header</span><span style="color:#000;font-weight:bold">&gt;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#8f5902;font-style:italic">{{</span><span style="color:#c4a000">.TableOfContents</span><span style="color:#8f5902;font-style:italic">}}</span>
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">&lt;/</span><span style="color:#204a87;font-weight:bold">aside</span><span style="color:#000;font-weight:bold">&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">&lt;</span><span style="color:#204a87;font-weight:bold">a</span> <span style="color:#c4a000">href</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">&#34;#&#34;</span> <span style="color:#c4a000">id</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">&#34;toc-toggle&#34;</span><span style="color:#000;font-weight:bold">&gt;&lt;/</span><span style="color:#204a87;font-weight:bold">a</span><span style="color:#000;font-weight:bold">&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">{{</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">end</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#8f5902;font-style:italic">}}</span>
+</span></span></code></pre></div><h2 id="uso-de-la-configuración-del-sitio">Uso de la configuración del sitio</h2>
+<p><a href="https://gohugo.io/templates/introduction/#use-site-configuration-parameters">https://gohugo.io/templates/introduction/#use-site-configuration-parameters</a></p>
+<p>Y también datos del archivo de configuración general:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go-html-template" data-lang="go-html-template"><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">{{</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">if</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#c4a000">.Site.Params.copyrighthtml</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#8f5902;font-style:italic">}}</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#000;font-weight:bold">&lt;</span><span style="color:#204a87;font-weight:bold">footer</span><span style="color:#000;font-weight:bold">&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#000;font-weight:bold">&lt;</span><span style="color:#204a87;font-weight:bold">div</span> <span style="color:#c4a000">class</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">&#34;text-center&#34;</span><span style="color:#000;font-weight:bold">&gt;</span><span style="color:#8f5902;font-style:italic">{{</span><span style="color:#c4a000">.Site.Params.CopyrightHTML</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">|</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">safeHTML</span><span style="color:#8f5902;font-style:italic">}}</span><span style="color:#000;font-weight:bold">&lt;/</span><span style="color:#204a87;font-weight:bold">div</span><span style="color:#000;font-weight:bold">&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#000;font-weight:bold">&lt;/</span><span style="color:#204a87;font-weight:bold">footer</span><span style="color:#000;font-weight:bold">&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">{{</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">end</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#8f5902;font-style:italic">}}</span>
+</span></span></code></pre></div><h2 id="uso-de-datos-de-la-página">Uso de datos de la página</h2>
+<p><strong>Archetype</strong> ejemplo</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-toml" data-lang="toml"><span style="display:flex;"><span><span style="color:#000">---</span>
+</span></span><span style="display:flex;"><span><span style="color:#000">title</span><span style="color:#a40000">:</span> <span style="color:#a40000">​</span> <span style="color:#4e9a06">&#34; ​ {{​ ​ replace​ ​ .Name​ ​ &#34;</span><span style="color:#000">-</span><span style="color:#4e9a06">&#34; &#34;</span> <span style="color:#4e9a06">&#34; | title }}&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#000">draft</span><span style="color:#a40000">:</span> <span style="color:#204a87;font-weight:bold">false</span>
+</span></span><span style="display:flex;"><span><span style="color:#000">image</span><span style="color:#a40000">:</span> <span style="color:#a40000">​</span> <span style="color:#a40000">//</span><span style="color:#000">via</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">placeholder</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">com</span><span style="color:#a40000">/</span><span style="color:#0000cf;font-weight:bold">640</span><span style="color:#000">x150</span>
+</span></span><span style="display:flex;"><span><span style="color:#000">alt_text</span><span style="color:#a40000">:</span> <span style="color:#a40000">​</span> <span style="color:#4e9a06">&#34; ​ {{​ ​ replace​ ​ .Name​ ​ &#34;</span><span style="color:#000">-</span><span style="color:#4e9a06">&#34; &#34;</span> <span style="color:#4e9a06">&#34; | title }} screenshot&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#000">summary</span><span style="color:#a40000">:</span> <span style="color:#a40000">​</span> <span style="color:#4e9a06">&#34; ​ Summary​ ​ of​ ​ the​ ​ {{​ ​ replace​ ​ .Name​ ​ &#34;</span><span style="color:#000">-</span><span style="color:#4e9a06">&#34; &#34;</span> <span style="color:#4e9a06">&#34; | title }} project&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#000">tech_used</span><span style="color:#a40000">:</span>
+</span></span><span style="display:flex;"><span><span style="color:#000">-</span> <span style="color:#a40000">​</span> <span style="color:#000">JavaScript</span>
+</span></span><span style="display:flex;"><span><span style="color:#000">-</span> <span style="color:#a40000">​</span> <span style="color:#000">CSS</span>
+</span></span><span style="display:flex;"><span><span style="color:#000">-</span> <span style="color:#a40000">​</span> <span style="color:#000">HTML</span>
+</span></span><span style="display:flex;"><span><span style="color:#000">---</span>
+</span></span></code></pre></div><p><strong>Template</strong></p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go-html-template" data-lang="go-html-template"><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">{{</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">define</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#34;main&#34;</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#8f5902;font-style:italic">}}</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#000;font-weight:bold">&lt;</span><span style="color:#204a87;font-weight:bold">div</span> <span style="color:#c4a000">class</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">&#34;project-container&#34;</span><span style="color:#000;font-weight:bold">&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#000;font-weight:bold">&lt;</span><span style="color:#204a87;font-weight:bold">section</span> <span style="color:#c4a000">class</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">&#34;project-list&#34;</span><span style="color:#000;font-weight:bold">&gt;</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#000;font-weight:bold">&lt;</span><span style="color:#204a87;font-weight:bold">h2</span><span style="color:#000;font-weight:bold">&gt;</span>Projects<span style="color:#000;font-weight:bold">&lt;/</span><span style="color:#204a87;font-weight:bold">h2</span><span style="color:#000;font-weight:bold">&gt;</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#000;font-weight:bold">&lt;</span><span style="color:#204a87;font-weight:bold">ul</span><span style="color:#000;font-weight:bold">&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#8f5902;font-style:italic">{{</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">range</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">where</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#c4a000">.Site.RegularPages</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#34;Type&#34;</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#34;in&#34;</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#34;projects&#34;</span><span style="color:#ce5c00;font-weight:bold">)</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#8f5902;font-style:italic">}}</span>
+</span></span><span style="display:flex;"><span>          <span style="color:#000;font-weight:bold">&lt;</span><span style="color:#204a87;font-weight:bold">li</span><span style="color:#000;font-weight:bold">&gt;&lt;</span><span style="color:#204a87;font-weight:bold">a</span> <span style="color:#c4a000">href</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">&#34;</span><span style="color:#8f5902;font-style:italic">{{</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#c4a000">.RelPermalink</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#8f5902;font-style:italic">}}</span><span style="color:#4e9a06">&#34;</span><span style="color:#000;font-weight:bold">&gt;</span><span style="color:#8f5902;font-style:italic">{{</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#c4a000">.Title</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#8f5902;font-style:italic">}}</span><span style="color:#000;font-weight:bold">&lt;/</span><span style="color:#204a87;font-weight:bold">a</span><span style="color:#000;font-weight:bold">&gt;&lt;/</span><span style="color:#204a87;font-weight:bold">li</span><span style="color:#000;font-weight:bold">&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#8f5902;font-style:italic">{{</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">end</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#8f5902;font-style:italic">}}</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#000;font-weight:bold">&lt;/</span><span style="color:#204a87;font-weight:bold">ul</span><span style="color:#000;font-weight:bold">&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#000;font-weight:bold">&lt;/</span><span style="color:#204a87;font-weight:bold">section</span><span style="color:#000;font-weight:bold">&gt;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#000;font-weight:bold">&lt;</span><span style="color:#204a87;font-weight:bold">section</span> <span style="color:#c4a000">class</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">&#34;project&#34;</span><span style="color:#000;font-weight:bold">&gt;</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#000;font-weight:bold">&lt;</span><span style="color:#204a87;font-weight:bold">h2</span><span style="color:#000;font-weight:bold">&gt;</span><span style="color:#8f5902;font-style:italic">{{</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#c4a000">.Title</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#8f5902;font-style:italic">}}</span><span style="color:#000;font-weight:bold">&lt;/</span><span style="color:#204a87;font-weight:bold">h2</span><span style="color:#000;font-weight:bold">&gt;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>      <span style="color:#8f5902;font-style:italic">{{</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#c4a000">.Content</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#8f5902;font-style:italic">}}</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#000;font-weight:bold">&lt;</span><span style="color:#204a87;font-weight:bold">img</span> <span style="color:#c4a000">alt</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">&#34;</span><span style="color:#8f5902;font-style:italic">{{</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#c4a000">.Params.alt_text</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#8f5902;font-style:italic">}}</span><span style="color:#4e9a06">&#34;</span> <span style="color:#c4a000">src</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">&#34;</span><span style="color:#8f5902;font-style:italic">{{</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#c4a000">.Params.image</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#8f5902;font-style:italic">}}</span><span style="color:#4e9a06">&#34;</span><span style="color:#000;font-weight:bold">&gt;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>      <span style="color:#000;font-weight:bold">&lt;</span><span style="color:#204a87;font-weight:bold">h3</span><span style="color:#000;font-weight:bold">&gt;</span>Tech used<span style="color:#000;font-weight:bold">&lt;/</span><span style="color:#204a87;font-weight:bold">h3</span><span style="color:#000;font-weight:bold">&gt;</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#000;font-weight:bold">&lt;</span><span style="color:#204a87;font-weight:bold">ul</span><span style="color:#000;font-weight:bold">&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#8f5902;font-style:italic">{{</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">range</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#c4a000">.Params.tech_used</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#8f5902;font-style:italic">}}</span>
+</span></span><span style="display:flex;"><span>          <span style="color:#000;font-weight:bold">&lt;</span><span style="color:#204a87;font-weight:bold">li</span><span style="color:#000;font-weight:bold">&gt;</span><span style="color:#8f5902;font-style:italic">{{</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#c4a000">.</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#8f5902;font-style:italic">}}</span><span style="color:#000;font-weight:bold">&lt;/</span><span style="color:#204a87;font-weight:bold">li</span><span style="color:#000;font-weight:bold">&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#8f5902;font-style:italic">{{</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">end</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#8f5902;font-style:italic">}}</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#000;font-weight:bold">&lt;/</span><span style="color:#204a87;font-weight:bold">ul</span><span style="color:#000;font-weight:bold">&gt;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#000;font-weight:bold">&lt;/</span><span style="color:#204a87;font-weight:bold">section</span><span style="color:#000;font-weight:bold">&gt;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#000;font-weight:bold">&lt;/</span><span style="color:#204a87;font-weight:bold">div</span><span style="color:#000;font-weight:bold">&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">{{</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">end</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#8f5902;font-style:italic">}}</span>
+</span></span></code></pre></div>
+	
+	
+	<div class="text-muted mt-5 pt-3 border-top">
+  Última modificación October 14, 2022: <a href="https://github.com/lmorillas/dwes/commit/96f81918867c02cc31daf508ce19ae1df098bb84">update (96f8191)</a>
+</div>
+
+</div>
+
+
+          </main>
+        </div>
+      </div>
+      
+<footer class="bg-dark py-5 row d-print-none">
+  <div class="container-fluid mx-sm-5">
+    <div class="row">
+      <div class="col-6 col-sm-4 text-xs-center order-sm-2">
+        
+      </div>
+      <div class="col-6 col-sm-4 text-right text-xs-center order-sm-3">
+        
+      </div>
+      <div class="col-12 col-sm-4 text-center py-2 order-sm-2">
+        <small class="text-white">&copy; 2022 @lmorillas Derechos reservados</small>
+        <small class="ml-1"><a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Política de privacidad</a></small>
+	
+		
+	
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+    integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+    crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.min.js"
+    integrity="sha512-UR25UO94eTnCVwjbXozyeVd6ZqpaAE9naiEUBK/A+QDbfSTQFhPGj5lOR6d8tsgbBk84Ggb5A3EkjsOgPRPcKA=="
+    crossorigin="anonymous"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/mermaid@8.13.4/dist/mermaid.min.js" integrity="sha512-JERecFUBbsm75UpkVheAuDOE8NdHjQBrPACfEQYPwvPG+fjgCpHAz1Jw2ci9EXmd3DdfiWth3O3CQvcfEg8gsA==" crossorigin="anonymous"></script>
+
+
+
+<style>
+.markmap > svg {
+  width: 100%;
+  height: 300px;
+}
+</style>
+<script>
+window.markmap = {
+  autoLoader: { manual: true },
+};
+</script>
+<script src="https://cdn.jsdelivr.net/npm/markmap-autoloader"></script>
+
+
+<script src='/js/tabpane-persist.js'></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script src="/hugo-tutorial/js/main.min.e0a752aa6c21a747d962a08f1eff7cc3567658032a6cbe09a650c335caf4674e.js" integrity="sha256-4KdSqmwhp0fZYqCPHv98w1Z2WAMqbL4JplDDNcr0Z04=" crossorigin="anonymous"></script>
+
+
+
+
+  </body>
+</html>

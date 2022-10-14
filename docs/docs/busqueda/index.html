@@ -1,0 +1,513 @@
+<!doctype html>
+<html lang="es" class="no-js">
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="generator" content="Hugo 0.102.3" />
+<meta name="robots" content="index, follow">
+
+
+<link rel="shortcut icon" href="/hugo-tutorial/favicons/favicon.ico" >
+<link rel="apple-touch-icon" href="/hugo-tutorial/favicons/apple-touch-icon-180x180.png" sizes="180x180">
+<link rel="icon" type="image/png" href="/hugo-tutorial/favicons/favicon-16x16.png" sizes="16x16">
+<link rel="icon" type="image/png" href="/hugo-tutorial/favicons/favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="/hugo-tutorial/favicons/android-36x36.png" sizes="36x36">
+<link rel="icon" type="image/png" href="/hugo-tutorial/favicons/android-48x48.png" sizes="48x48">
+<link rel="icon" type="image/png" href="/hugo-tutorial/favicons/android-72x72.png" sizes="72x72">
+<link rel="icon" type="image/png" href="/hugo-tutorial/favicons/android-96x96.png" sizes="96x96">
+<link rel="icon" type="image/png" href="/hugo-tutorial/favicons/android-144x144.png" sizes="144x144">
+<link rel="icon" type="image/png" href="/hugo-tutorial/favicons/android-192x192.png" sizes="192x192">
+
+<title>Búsqueda de páginas | Webs estáticas con Hugo</title>
+<meta name="description" content="
+
+
+Objetivo: Introducir un motor de búsqueda en el sitio.
+
+https://gohugo.io/tools/search/
+Búsqueda con Fuse.js
+
+
+
+
+Alternativas a la búsqueda en …">
+<meta property="og:title" content="Búsqueda de páginas" />
+<meta property="og:description" content="Objetivo: Introducir un motor de búsqueda en el sitio.
+https://gohugo.io/tools/search/ Búsqueda con Fuse.js Alternativas a la búsqueda en sitios estáticos. Para sitios con muchas páginas, considerar Algolia
+Búsqueda en nuestro sitio con fuse.js Ejemplo: https://www.edwardawebb.com/search/
+Configuración Página de búsqueda (contenido) Esta página responde a la url /buscar. No tiene contenido. El contenido se generará con la plantilla layouts/page/search.html
+content/buscar.md
+--- title: &#34;Resultados de búsqueda&#34; sitemap: priority : 0.1 layout: &#34;buscar&#34; --- Configurar salidas en config." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://lmorillas.github.io/hugo-tutorial/docs/busqueda/" /><meta property="article:section" content="docs" />
+<meta property="article:published_time" content="2017-01-05T00:00:00+00:00" />
+<meta property="article:modified_time" content="2022-10-14T10:07:55+02:00" /><meta property="og:site_name" content="Webs estáticas con Hugo" />
+
+<meta itemprop="name" content="Búsqueda de páginas">
+<meta itemprop="description" content="Objetivo: Introducir un motor de búsqueda en el sitio.
+https://gohugo.io/tools/search/ Búsqueda con Fuse.js Alternativas a la búsqueda en sitios estáticos. Para sitios con muchas páginas, considerar Algolia
+Búsqueda en nuestro sitio con fuse.js Ejemplo: https://www.edwardawebb.com/search/
+Configuración Página de búsqueda (contenido) Esta página responde a la url /buscar. No tiene contenido. El contenido se generará con la plantilla layouts/page/search.html
+content/buscar.md
+--- title: &#34;Resultados de búsqueda&#34; sitemap: priority : 0.1 layout: &#34;buscar&#34; --- Configurar salidas en config."><meta itemprop="datePublished" content="2017-01-05T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2022-10-14T10:07:55+02:00" />
+<meta itemprop="wordCount" content="558">
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Búsqueda de páginas"/>
+<meta name="twitter:description" content="Objetivo: Introducir un motor de búsqueda en el sitio.
+https://gohugo.io/tools/search/ Búsqueda con Fuse.js Alternativas a la búsqueda en sitios estáticos. Para sitios con muchas páginas, considerar Algolia
+Búsqueda en nuestro sitio con fuse.js Ejemplo: https://www.edwardawebb.com/search/
+Configuración Página de búsqueda (contenido) Esta página responde a la url /buscar. No tiene contenido. El contenido se generará con la plantilla layouts/page/search.html
+content/buscar.md
+--- title: &#34;Resultados de búsqueda&#34; sitemap: priority : 0.1 layout: &#34;buscar&#34; --- Configurar salidas en config."/>
+
+
+
+
+<link rel="preload" href="/hugo-tutorial/scss/main.min.6f9a61915ae86417164c61d275528c590ac6e5f9dadf5e49cacc7e18108a8014.css" as="style">
+<link href="/hugo-tutorial/scss/main.min.6f9a61915ae86417164c61d275528c590ac6e5f9dadf5e49cacc7e18108a8014.css" rel="stylesheet" integrity="">
+
+<script
+  src="https://code.jquery.com/jquery-3.6.0.min.js"
+  integrity="sha384-vtXRMe3mGCbOeY7l30aIg8H9p3GdeSe4IFlP6G8JMa7o7lXvnz3GFKzPxzJdPfGK"
+  crossorigin="anonymous"></script>
+
+  </head>
+  <body class="td-page">
+    <header>
+      
+<nav class="js-navbar-scroll navbar navbar-expand navbar-dark flex-column flex-md-row td-navbar">
+        <a class="navbar-brand" href="/hugo-tutorial/">
+		<span class="navbar-logo"></span><span class="font-weight-bold">Webs estáticas con Hugo</span>
+	</a>
+	<div class="td-navbar-nav-scroll ml-md-auto" id="main_navbar">
+		<ul class="navbar-nav mt-2 mt-lg-0">
+			
+			
+			
+			
+		</ul>
+	</div>
+	<div class="navbar-nav d-none d-lg-block"></div>
+</nav>
+
+    </header>
+    <div class="container-fluid td-outer">
+      <div class="td-main">
+        <div class="row flex-xl-nowrap">
+          <aside class="col-12 col-md-3 col-xl-2 td-sidebar d-print-none">
+            
+<div id="td-sidebar-menu" class="td-sidebar__inner">
+  <form class="td-sidebar__search d-flex align-items-center">
+    
+    <button class="btn btn-link td-sidebar__toggle d-md-none p-0 ml-3 fas fa-bars" type="button" data-toggle="collapse" data-target="#td-section-nav" aria-controls="td-section-nav" aria-expanded="false" aria-label="Toggle section navigation">
+    </button>
+  </form>
+  <nav class="collapse td-sidebar-nav foldable-nav" id="td-section-nav">
+    <ul class="td-sidebar-nav__section pr-md-3 ul-0">
+      <li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child active-path" id="m-hugo-tutorialdocs-li">
+  <a href="/hugo-tutorial/docs/" class="align-left pl-0 td-sidebar-link td-sidebar-link__section tree-root" id="m-hugo-tutorialdocs"><span class="">Generadores de Sitios Estáticos</span></a>
+  <ul class="ul-1">
+    <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-hugo-tutorialdocsweben1minuto-li">
+  <input type="checkbox" id="m-hugo-tutorialdocsweben1minuto-check"/>
+  <label for="m-hugo-tutorialdocsweben1minuto-check"><a href="/hugo-tutorial/docs/weben1minuto/" class="align-left pl-0  td-sidebar-link td-sidebar-link__page" id="m-hugo-tutorialdocsweben1minuto"><span class="">Mi primera web con Hugo</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-hugo-tutorialdocstareamarkdown-li">
+  <input type="checkbox" id="m-hugo-tutorialdocstareamarkdown-check"/>
+  <label for="m-hugo-tutorialdocstareamarkdown-check"><a href="/hugo-tutorial/docs/tareamarkdown/" class="align-left pl-0  td-sidebar-link td-sidebar-link__page" id="m-hugo-tutorialdocstareamarkdown"><span class="">Tarea Markdown</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-hugo-tutorialdocscontenido-li">
+  <input type="checkbox" id="m-hugo-tutorialdocscontenido-check"/>
+  <label for="m-hugo-tutorialdocscontenido-check"><a href="/hugo-tutorial/docs/contenido/" class="align-left pl-0  td-sidebar-link td-sidebar-link__page" id="m-hugo-tutorialdocscontenido"><span class="">Cómo añadir contenido</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-hugo-tutorialdocsnuevo_tema-li">
+  <input type="checkbox" id="m-hugo-tutorialdocsnuevo_tema-check"/>
+  <label for="m-hugo-tutorialdocsnuevo_tema-check"><a href="/hugo-tutorial/docs/nuevo_tema/" class="align-left pl-0  td-sidebar-link td-sidebar-link__page" id="m-hugo-tutorialdocsnuevo_tema"><span class="">Crear un tema</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-hugo-tutorialdocsmenus-li">
+  <input type="checkbox" id="m-hugo-tutorialdocsmenus-check"/>
+  <label for="m-hugo-tutorialdocsmenus-check"><a href="/hugo-tutorial/docs/menus/" class="align-left pl-0  td-sidebar-link td-sidebar-link__page" id="m-hugo-tutorialdocsmenus"><span class="">Menús</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-hugo-tutorialdocsimagenes-li">
+  <input type="checkbox" id="m-hugo-tutorialdocsimagenes-check"/>
+  <label for="m-hugo-tutorialdocsimagenes-check"><a href="/hugo-tutorial/docs/imagenes/" class="align-left pl-0  td-sidebar-link td-sidebar-link__page" id="m-hugo-tutorialdocsimagenes"><span class="">Imágenes</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-hugo-tutorialdocstemplates-li">
+  <input type="checkbox" id="m-hugo-tutorialdocstemplates-check"/>
+  <label for="m-hugo-tutorialdocstemplates-check"><a href="/hugo-tutorial/docs/templates/" class="align-left pl-0  td-sidebar-link td-sidebar-link__page" id="m-hugo-tutorialdocstemplates"><span class="">Plantillas</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-hugo-tutorialdocsshortcodes-li">
+  <input type="checkbox" id="m-hugo-tutorialdocsshortcodes-check"/>
+  <label for="m-hugo-tutorialdocsshortcodes-check"><a href="/hugo-tutorial/docs/shortcodes/" class="align-left pl-0  td-sidebar-link td-sidebar-link__page" id="m-hugo-tutorialdocsshortcodes"><span class="">Shortcodes</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-hugo-tutorialdocsmapas_leaflet-li">
+  <input type="checkbox" id="m-hugo-tutorialdocsmapas_leaflet-check"/>
+  <label for="m-hugo-tutorialdocsmapas_leaflet-check"><a href="/hugo-tutorial/docs/mapas_leaflet/" class="align-left pl-0  td-sidebar-link td-sidebar-link__page" id="m-hugo-tutorialdocsmapas_leaflet"><span class="">Mapas Leaflet</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-hugo-tutorialdocsdatos-li">
+  <input type="checkbox" id="m-hugo-tutorialdocsdatos-check"/>
+  <label for="m-hugo-tutorialdocsdatos-check"><a href="/hugo-tutorial/docs/datos/" class="align-left pl-0  td-sidebar-link td-sidebar-link__page" id="m-hugo-tutorialdocsdatos"><span class="">Trabajo con datos</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child active-path" id="m-hugo-tutorialdocsbusqueda-li">
+  <input type="checkbox" id="m-hugo-tutorialdocsbusqueda-check" checked/>
+  <label for="m-hugo-tutorialdocsbusqueda-check"><a href="/hugo-tutorial/docs/busqueda/" class="align-left pl-0  active td-sidebar-link td-sidebar-link__page" id="m-hugo-tutorialdocsbusqueda"><span class="td-sidebar-nav-active-item">Búsqueda de páginas</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-hugo-tutorialdocsformulario-li">
+  <input type="checkbox" id="m-hugo-tutorialdocsformulario-check"/>
+  <label for="m-hugo-tutorialdocsformulario-check"><a href="/hugo-tutorial/docs/formulario/" class="align-left pl-0  td-sidebar-link td-sidebar-link__page" id="m-hugo-tutorialdocsformulario"><span class="">Inserción de formularios dinámicos</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-hugo-tutorialdocsnotas-repaso-li">
+  <input type="checkbox" id="m-hugo-tutorialdocsnotas-repaso-check"/>
+  <label for="m-hugo-tutorialdocsnotas-repaso-check"><a href="/hugo-tutorial/docs/notas-repaso/" class="align-left pl-0  td-sidebar-link td-sidebar-link__page" id="m-hugo-tutorialdocsnotas-repaso"><span class="">Algunas notas de repaso</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-hugo-tutorialdocsprivacidad-li">
+  <input type="checkbox" id="m-hugo-tutorialdocsprivacidad-check"/>
+  <label for="m-hugo-tutorialdocsprivacidad-check"><a href="/hugo-tutorial/docs/privacidad/" class="align-left pl-0  td-sidebar-link td-sidebar-link__page" id="m-hugo-tutorialdocsprivacidad"><span class="">Configuración GDPR</span></a></label>
+  
+</li>
+  </ul>
+</li>
+    </ul>
+  </nav>
+</div>
+
+          </aside>
+          <aside class="d-none d-xl-block col-xl-2 td-sidebar-toc d-print-none">
+            
+            
+
+
+<div class="td-toc"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#búsqueda-en-nuestro-sitio-con-fusejs">Búsqueda en nuestro sitio con <code>fuse.js</code></a></li>
+    <li><a href="#configuración">Configuración</a>
+      <ul>
+        <li><a href="#página-de-búsqueda-contenido">Página de búsqueda (contenido)</a></li>
+        <li><a href="#configurar-salidas-en-configtoml">Configurar salidas en <code>config.toml</code></a></li>
+        <li><a href="#crear-indexjson">Crear <code>index.json</code></a></li>
+        <li><a href="#plantilla-de-búsqueda">Plantilla de búsqueda</a></li>
+        <li><a href="#searchjs">Search.js</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+
+
+
+            
+
+	
+		
+
+
+
+  
+  
+
+	
+		
+
+
+
+  
+  
+
+	
+
+          </aside>
+          <main class="col-12 col-md-9 col-xl-8 pl-md-5" role="main">
+            
+  
+
+            
+            
+<div class="td-content">
+	<h1>Búsqueda de páginas</h1>
+	
+	<header class="article-meta">
+		
+
+  
+    
+
+
+  
+    
+
+
+  
+
+		
+	</header>    
+	
+
+<div class="pageinfo pageinfo-primary">
+<p><strong>Objetivo</strong>: Introducir un motor de búsqueda en el sitio.</p>
+<ul>
+<li><a href="https://gohugo.io/tools/search/">https://gohugo.io/tools/search/</a></li>
+<li><a href="https://gist.github.com/eddiewebb/735feb48f50f0ddd65ae5606a1cb41ae">Búsqueda con Fuse.js</a></li>
+</ul>
+
+</div>
+
+<p>Alternativas a la búsqueda en sitios estáticos. Para sitios con muchas páginas, considerar <a href="https://www.algolia.com/">Algolia</a></p>
+<h2 id="búsqueda-en-nuestro-sitio-con-fusejs">Búsqueda en nuestro sitio con <code>fuse.js</code></h2>
+<p>Ejemplo: <a href="https://www.edwardawebb.com/search/">https://www.edwardawebb.com/search/</a></p>
+<h2 id="configuración">Configuración</h2>
+<h3 id="página-de-búsqueda-contenido">Página de búsqueda (contenido)</h3>
+<p>Esta página responde a la url <code>/buscar</code>. No tiene contenido. El contenido se generará con la plantilla <strong>layouts/page/search.html</strong></p>
+<p><strong>content/buscar.md</strong></p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#ce5c00;font-weight:bold">---</span>
+</span></span><span style="display:flex;"><span><span style="color:#000">title</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;Resultados de búsqueda&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#000">sitemap</span><span style="color:#000;font-weight:bold">:</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#000">priority</span> <span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">0.1</span>
+</span></span><span style="display:flex;"><span><span style="color:#000">layout</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;buscar&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#ce5c00;font-weight:bold">---</span>
+</span></span></code></pre></div><h3 id="configurar-salidas-en-configtoml">Configurar salidas en <code>config.toml</code></h3>
+<p>Incluir <strong>JSON</strong></p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-toml" data-lang="toml"><span style="display:flex;"><span><span style="color:#000;font-weight:bold">[</span><span style="color:#000">outputs</span><span style="color:#000;font-weight:bold">]</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#000">home</span> <span style="color:#000;font-weight:bold">=</span> <span style="color:#000;font-weight:bold">[</span><span style="color:#4e9a06">&#34;HTML&#34;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#4e9a06">&#34;JSON&#34;</span><span style="color:#000;font-weight:bold">]</span>
+</span></span></code></pre></div><h3 id="crear-indexjson">Crear <code>index.json</code></h3>
+<p><strong>layouts/index.json</strong></p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#000;font-weight:bold">{{</span><span style="color:#ce5c00;font-weight:bold">-</span> <span style="color:#a40000">$</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">Scratch</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">Add</span> <span style="color:#4e9a06">&#34;index&#34;</span> <span style="color:#000">slice</span> <span style="color:#ce5c00;font-weight:bold">-</span><span style="color:#000;font-weight:bold">}}</span>
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">{{</span><span style="color:#ce5c00;font-weight:bold">-</span> <span style="color:#204a87;font-weight:bold">range</span> <span style="color:#000;font-weight:bold">.</span><span style="color:#000">Site</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">RegularPages</span> <span style="color:#ce5c00;font-weight:bold">-</span><span style="color:#000;font-weight:bold">}}</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#000;font-weight:bold">{{</span><span style="color:#ce5c00;font-weight:bold">-</span> <span style="color:#a40000">$</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">Scratch</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">Add</span> <span style="color:#4e9a06">&#34;index&#34;</span> <span style="color:#000;font-weight:bold">(</span><span style="color:#000">dict</span> <span style="color:#4e9a06">&#34;title&#34;</span> <span style="color:#000;font-weight:bold">.</span><span style="color:#000">Title</span> <span style="color:#4e9a06">&#34;tags&#34;</span> <span style="color:#000;font-weight:bold">.</span><span style="color:#000">Params</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">tags</span> <span style="color:#4e9a06">&#34;categories&#34;</span> <span style="color:#000;font-weight:bold">.</span><span style="color:#000">Params</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">categories</span> <span style="color:#4e9a06">&#34;contents&#34;</span> <span style="color:#000;font-weight:bold">.</span><span style="color:#000">Plain</span> <span style="color:#4e9a06">&#34;permalink&#34;</span> <span style="color:#000;font-weight:bold">.</span><span style="color:#000">Permalink</span><span style="color:#000;font-weight:bold">)</span> <span style="color:#ce5c00;font-weight:bold">-</span><span style="color:#000;font-weight:bold">}}</span>
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">{{</span><span style="color:#ce5c00;font-weight:bold">-</span> <span style="color:#000">end</span> <span style="color:#ce5c00;font-weight:bold">-</span><span style="color:#000;font-weight:bold">}}</span>
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">{{</span><span style="color:#ce5c00;font-weight:bold">-</span> <span style="color:#a40000">$</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">Scratch</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">Get</span> <span style="color:#4e9a06">&#34;index&#34;</span> <span style="color:#000;font-weight:bold">|</span> <span style="color:#000">jsonify</span> <span style="color:#ce5c00;font-weight:bold">-</span><span style="color:#000;font-weight:bold">}}</span>
+</span></span></code></pre></div><p>Para buscar en más campos, modifica el <strong>index.json</strong></p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span>  <span style="color:#4e9a06">&#34;contents&#34;</span><span style="color:#000;font-weight:bold">:{{</span> <span style="color:#000;font-weight:bold">.</span><span style="color:#000">Content</span> <span style="color:#000;font-weight:bold">|</span> <span style="color:#000">plainify</span> <span style="color:#000;font-weight:bold">|</span> <span style="color:#000">jsonify</span> <span style="color:#000;font-weight:bold">}}</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#000;font-weight:bold">{{</span> <span style="color:#204a87;font-weight:bold">if</span> <span style="color:#000;font-weight:bold">.</span><span style="color:#000">Params</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">tags</span> <span style="color:#000;font-weight:bold">}},</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#4e9a06">&#34;tags&#34;</span><span style="color:#000;font-weight:bold">:{{</span> <span style="color:#000;font-weight:bold">.</span><span style="color:#000">Params</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">tags</span> <span style="color:#000;font-weight:bold">|</span> <span style="color:#000">jsonify</span> <span style="color:#000;font-weight:bold">}}{{</span><span style="color:#000">end</span><span style="color:#000;font-weight:bold">}},</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#4e9a06">&#34;categories&#34;</span> <span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">{{</span> <span style="color:#000;font-weight:bold">.</span><span style="color:#000">Params</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">categories</span> <span style="color:#000;font-weight:bold">|</span> <span style="color:#000">jsonify</span> <span style="color:#000;font-weight:bold">}},</span>
+</span></span></code></pre></div><h3 id="plantilla-de-búsqueda">Plantilla de búsqueda</h3>
+<blockquote>
+<p><strong>ATENCIÓN:</strong> La plantilla base tiene que tener los bloques <strong>footerfiles</strong> y <strong>main</strong>. Si no renómbralos o crea los bloques en la plantilla base.</p>
+</blockquote>
+<p><strong>layouts/_default/buscar.html</strong></p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go-html-template" data-lang="go-html-template"><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">{{</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">define</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#34;footerfiles&#34;</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#8f5902;font-style:italic">}}</span>
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">&lt;</span><span style="color:#204a87;font-weight:bold">script</span> <span style="color:#c4a000">src</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">&#34;https://code.jquery.com/jquery-3.3.1.min.js&#34;</span><span style="color:#000;font-weight:bold">&gt;&lt;/</span><span style="color:#204a87;font-weight:bold">script</span><span style="color:#000;font-weight:bold">&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">&lt;</span><span style="color:#204a87;font-weight:bold">script</span> <span style="color:#c4a000">src</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">&#34;https://cdnjs.cloudflare.com/ajax/libs/fuse.js/3.2.0/fuse.min.js&#34;</span><span style="color:#000;font-weight:bold">&gt;&lt;/</span><span style="color:#204a87;font-weight:bold">script</span><span style="color:#000;font-weight:bold">&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">&lt;</span><span style="color:#204a87;font-weight:bold">script</span> <span style="color:#c4a000">src</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">&#34;https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js&#34;</span><span style="color:#000;font-weight:bold">&gt;&lt;/</span><span style="color:#204a87;font-weight:bold">script</span><span style="color:#000;font-weight:bold">&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">&lt;</span><span style="color:#204a87;font-weight:bold">script</span> <span style="color:#c4a000">src</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">&#34;</span><span style="color:#8f5902;font-style:italic">{{</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#34;js/search.js&#34;</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">|</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">absURL</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#8f5902;font-style:italic">}}</span><span style="color:#4e9a06">&#34;</span><span style="color:#000;font-weight:bold">&gt;&lt;/</span><span style="color:#204a87;font-weight:bold">script</span><span style="color:#000;font-weight:bold">&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">{{</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">end</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#8f5902;font-style:italic">}}</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">{{</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">define</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#34;main&#34;</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#8f5902;font-style:italic">}}</span>
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">&lt;</span><span style="color:#204a87;font-weight:bold">section</span> <span style="color:#c4a000">class</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">&#34;resume-section p-3 p-lg-5 d-flex flex-column&#34;</span><span style="color:#000;font-weight:bold">&gt;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#000;font-weight:bold">&lt;</span><span style="color:#204a87;font-weight:bold">div</span> <span style="color:#c4a000">class</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">&#34;my-auto&#34;</span> <span style="color:#000;font-weight:bold">&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#000;font-weight:bold">&lt;</span><span style="color:#204a87;font-weight:bold">form</span> <span style="color:#c4a000">action</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">&#34;</span><span style="color:#8f5902;font-style:italic">{{</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#34;buscar&#34;</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">|</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">absURL</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#8f5902;font-style:italic">}}</span><span style="color:#4e9a06">&#34;</span><span style="color:#000;font-weight:bold">&gt;</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#000;font-weight:bold">&lt;</span><span style="color:#204a87;font-weight:bold">input</span> <span style="color:#c4a000">id</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">&#34;search-query&#34;</span> <span style="color:#c4a000">name</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">&#34;s&#34;</span><span style="color:#000;font-weight:bold">/&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#000;font-weight:bold">&lt;/</span><span style="color:#204a87;font-weight:bold">form</span><span style="color:#000;font-weight:bold">&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#000;font-weight:bold">&lt;</span><span style="color:#204a87;font-weight:bold">div</span> <span style="color:#c4a000">id</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">&#34;search-results&#34;</span><span style="color:#000;font-weight:bold">&gt;</span>
+</span></span><span style="display:flex;"><span>     <span style="color:#000;font-weight:bold">&lt;</span><span style="color:#204a87;font-weight:bold">h3</span><span style="color:#000;font-weight:bold">&gt;</span>Páginas<span style="color:#000;font-weight:bold">&lt;/</span><span style="color:#204a87;font-weight:bold">h3</span><span style="color:#000;font-weight:bold">&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#000;font-weight:bold">&lt;/</span><span style="color:#204a87;font-weight:bold">div</span><span style="color:#000;font-weight:bold">&gt;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#000;font-weight:bold">&lt;/</span><span style="color:#204a87;font-weight:bold">div</span><span style="color:#000;font-weight:bold">&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">&lt;/</span><span style="color:#204a87;font-weight:bold">section</span><span style="color:#000;font-weight:bold">&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">&lt;!-- this template is sucked in by search.js and appended to the search-results div above. So editing here will adjust style --&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">&lt;</span><span style="color:#204a87;font-weight:bold">script</span> <span style="color:#c4a000">id</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">&#34;search-result-template&#34;</span> <span style="color:#c4a000">type</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">&#34;text/x-js-template&#34;</span><span style="color:#000;font-weight:bold">&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ce5c00;font-weight:bold">&lt;</span><span style="color:#000">div</span> <span style="color:#000">id</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">&#34;summary-${key}&#34;</span><span style="color:#ce5c00;font-weight:bold">&gt;</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#ce5c00;font-weight:bold">&lt;</span><span style="color:#000">h4</span><span style="color:#ce5c00;font-weight:bold">&gt;&lt;</span><span style="color:#000">a</span> <span style="color:#000">href</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">&#34;${link}&#34;</span><span style="color:#ce5c00;font-weight:bold">&gt;</span><span style="color:#000">$</span><span style="color:#000;font-weight:bold">{</span><span style="color:#000">title</span><span style="color:#000;font-weight:bold">}</span><span style="color:#ce5c00;font-weight:bold">&lt;</span><span style="color:#a40000">/a&gt;&lt;/h4&gt;</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#ce5c00;font-weight:bold">&lt;</span><span style="color:#000">p</span><span style="color:#ce5c00;font-weight:bold">&gt;</span><span style="color:#000">$</span><span style="color:#000;font-weight:bold">{</span><span style="color:#000">snippet</span><span style="color:#000;font-weight:bold">}</span><span style="color:#ce5c00;font-weight:bold">&lt;</span><span style="color:#a40000">/p&gt;</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#000">$</span><span style="color:#000;font-weight:bold">{</span> <span style="color:#000">isset</span> <span style="color:#000">tags</span> <span style="color:#000;font-weight:bold">}</span><span style="color:#ce5c00;font-weight:bold">&lt;</span><span style="color:#000">p</span><span style="color:#ce5c00;font-weight:bold">&gt;</span><span style="color:#000">Tags</span><span style="color:#ce5c00;font-weight:bold">:</span> <span style="color:#000">$</span><span style="color:#000;font-weight:bold">{</span><span style="color:#000">tags</span><span style="color:#000;font-weight:bold">}</span><span style="color:#ce5c00;font-weight:bold">&lt;</span><span style="color:#a40000">/p&gt;${ end }</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#000">$</span><span style="color:#000;font-weight:bold">{</span> <span style="color:#000">isset</span> <span style="color:#000">categories</span> <span style="color:#000;font-weight:bold">}</span><span style="color:#ce5c00;font-weight:bold">&lt;</span><span style="color:#000">p</span><span style="color:#ce5c00;font-weight:bold">&gt;</span><span style="color:#000">Categories</span><span style="color:#ce5c00;font-weight:bold">:</span> <span style="color:#000">$</span><span style="color:#000;font-weight:bold">{</span><span style="color:#000">categories</span><span style="color:#000;font-weight:bold">}</span><span style="color:#ce5c00;font-weight:bold">&lt;</span><span style="color:#a40000">/p&gt;${ end }</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ce5c00;font-weight:bold">&lt;</span><span style="color:#a40000">/div&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">&lt;/</span><span style="color:#204a87;font-weight:bold">script</span><span style="color:#000;font-weight:bold">&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">{{</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">end</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#8f5902;font-style:italic">}}</span>
+</span></span></code></pre></div><h3 id="searchjs">Search.js</h3>
+<p>Usa jquery, fuse.js y mark.js.  Busca el index de hugo y devuelve el contenido con coloreado.</p>
+<p><strong>static/js/search.js</strong></p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#000">summaryInclude</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#0000cf;font-weight:bold">60</span><span style="color:#000;font-weight:bold">;</span>
+</span></span><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">var</span> <span style="color:#000">fuseOptions</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000;font-weight:bold">{</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#000">shouldSort</span><span style="color:#ce5c00;font-weight:bold">:</span> <span style="color:#204a87;font-weight:bold">true</span><span style="color:#000;font-weight:bold">,</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#000">includeMatches</span><span style="color:#ce5c00;font-weight:bold">:</span> <span style="color:#204a87;font-weight:bold">true</span><span style="color:#000;font-weight:bold">,</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#000">threshold</span><span style="color:#ce5c00;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">0.0</span><span style="color:#000;font-weight:bold">,</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#000">tokenize</span><span style="color:#ce5c00;font-weight:bold">:</span><span style="color:#204a87;font-weight:bold">true</span><span style="color:#000;font-weight:bold">,</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#000">location</span><span style="color:#ce5c00;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">0</span><span style="color:#000;font-weight:bold">,</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#000">distance</span><span style="color:#ce5c00;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">100</span><span style="color:#000;font-weight:bold">,</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#000">maxPatternLength</span><span style="color:#ce5c00;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">32</span><span style="color:#000;font-weight:bold">,</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#000">minMatchCharLength</span><span style="color:#ce5c00;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">1</span><span style="color:#000;font-weight:bold">,</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#000">keys</span><span style="color:#ce5c00;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">[</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#000;font-weight:bold">{</span><span style="color:#000">name</span><span style="color:#ce5c00;font-weight:bold">:</span><span style="color:#4e9a06">&#34;title&#34;</span><span style="color:#000;font-weight:bold">,</span><span style="color:#000">weight</span><span style="color:#ce5c00;font-weight:bold">:</span><span style="color:#0000cf;font-weight:bold">0.8</span><span style="color:#000;font-weight:bold">},</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#000;font-weight:bold">{</span><span style="color:#000">name</span><span style="color:#ce5c00;font-weight:bold">:</span><span style="color:#4e9a06">&#34;contents&#34;</span><span style="color:#000;font-weight:bold">,</span><span style="color:#000">weight</span><span style="color:#ce5c00;font-weight:bold">:</span><span style="color:#0000cf;font-weight:bold">0.5</span><span style="color:#000;font-weight:bold">},</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#000;font-weight:bold">{</span><span style="color:#000">name</span><span style="color:#ce5c00;font-weight:bold">:</span><span style="color:#4e9a06">&#34;tags&#34;</span><span style="color:#000;font-weight:bold">,</span><span style="color:#000">weight</span><span style="color:#ce5c00;font-weight:bold">:</span><span style="color:#0000cf;font-weight:bold">0.3</span><span style="color:#000;font-weight:bold">},</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#000;font-weight:bold">{</span><span style="color:#000">name</span><span style="color:#ce5c00;font-weight:bold">:</span><span style="color:#4e9a06">&#34;categories&#34;</span><span style="color:#000;font-weight:bold">,</span><span style="color:#000">weight</span><span style="color:#ce5c00;font-weight:bold">:</span><span style="color:#0000cf;font-weight:bold">0.3</span><span style="color:#000;font-weight:bold">}</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#000;font-weight:bold">]</span>
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">};</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">var</span> <span style="color:#000">searchQuery</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">param</span><span style="color:#000;font-weight:bold">(</span><span style="color:#4e9a06">&#34;s&#34;</span><span style="color:#000;font-weight:bold">);</span>
+</span></span><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">if</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">searchQuery</span><span style="color:#000;font-weight:bold">){</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#000">$</span><span style="color:#000;font-weight:bold">(</span><span style="color:#4e9a06">&#34;#search-query&#34;</span><span style="color:#000;font-weight:bold">).</span><span style="color:#000">val</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">searchQuery</span><span style="color:#000;font-weight:bold">);</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#000">executeSearch</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">searchQuery</span><span style="color:#000;font-weight:bold">);</span>
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">}</span><span style="color:#204a87;font-weight:bold">else</span> <span style="color:#000;font-weight:bold">{</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#000">$</span><span style="color:#000;font-weight:bold">(</span><span style="color:#4e9a06">&#39;#search-results&#39;</span><span style="color:#000;font-weight:bold">).</span><span style="color:#000">append</span><span style="color:#000;font-weight:bold">(</span><span style="color:#4e9a06">&#34;&lt;p&gt;Introduzca una una palabra o frase&lt;/p&gt;&#34;</span><span style="color:#000;font-weight:bold">);</span>
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">}</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">function</span> <span style="color:#000">executeSearch</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">searchQuery</span><span style="color:#000;font-weight:bold">){</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#000">$</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">getJSON</span><span style="color:#000;font-weight:bold">(</span> <span style="color:#4e9a06">&#34;/index.json&#34;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#204a87;font-weight:bold">function</span><span style="color:#000;font-weight:bold">(</span> <span style="color:#000">data</span> <span style="color:#000;font-weight:bold">)</span> <span style="color:#000;font-weight:bold">{</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#204a87;font-weight:bold">var</span> <span style="color:#000">pages</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">data</span><span style="color:#000;font-weight:bold">;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#204a87;font-weight:bold">var</span> <span style="color:#000">fuse</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#204a87;font-weight:bold">new</span> <span style="color:#000">Fuse</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">pages</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">fuseOptions</span><span style="color:#000;font-weight:bold">);</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#204a87;font-weight:bold">var</span> <span style="color:#000">result</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">fuse</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">search</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">searchQuery</span><span style="color:#000;font-weight:bold">);</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#000">console</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">log</span><span style="color:#000;font-weight:bold">({</span><span style="color:#4e9a06">&#34;matches&#34;</span><span style="color:#ce5c00;font-weight:bold">:</span><span style="color:#000">result</span><span style="color:#000;font-weight:bold">});</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#204a87;font-weight:bold">if</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">result</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">length</span> <span style="color:#ce5c00;font-weight:bold">&gt;</span> <span style="color:#0000cf;font-weight:bold">0</span><span style="color:#000;font-weight:bold">){</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#000">populateResults</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">result</span><span style="color:#000;font-weight:bold">);</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#000;font-weight:bold">}</span><span style="color:#204a87;font-weight:bold">else</span><span style="color:#000;font-weight:bold">{</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#000">$</span><span style="color:#000;font-weight:bold">(</span><span style="color:#4e9a06">&#39;#search-results&#39;</span><span style="color:#000;font-weight:bold">).</span><span style="color:#000">append</span><span style="color:#000;font-weight:bold">(</span><span style="color:#4e9a06">&#34;&lt;p&gt;No se han encontrado resultados&lt;/p&gt;&#34;</span><span style="color:#000;font-weight:bold">);</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#000;font-weight:bold">}</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#000;font-weight:bold">});</span>
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">}</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">function</span> <span style="color:#000">populateResults</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">result</span><span style="color:#000;font-weight:bold">){</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#000">$</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">each</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">result</span><span style="color:#000;font-weight:bold">,</span><span style="color:#204a87;font-weight:bold">function</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">key</span><span style="color:#000;font-weight:bold">,</span><span style="color:#000">value</span><span style="color:#000;font-weight:bold">){</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#204a87;font-weight:bold">var</span> <span style="color:#000">contents</span><span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">value</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">item</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">contents</span><span style="color:#000;font-weight:bold">;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#204a87;font-weight:bold">var</span> <span style="color:#000">snippet</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#4e9a06">&#34;&#34;</span><span style="color:#000;font-weight:bold">;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#204a87;font-weight:bold">var</span> <span style="color:#000">snippetHighlights</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#000;font-weight:bold">[];</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#204a87;font-weight:bold">var</span> <span style="color:#000">tags</span> <span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#000;font-weight:bold">[];</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#204a87;font-weight:bold">if</span><span style="color:#000;font-weight:bold">(</span> <span style="color:#000">fuseOptions</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">tokenize</span> <span style="color:#000;font-weight:bold">){</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#000">snippetHighlights</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">push</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">searchQuery</span><span style="color:#000;font-weight:bold">);</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#000;font-weight:bold">}</span><span style="color:#204a87;font-weight:bold">else</span><span style="color:#000;font-weight:bold">{</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#000">$</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">each</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">value</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">matches</span><span style="color:#000;font-weight:bold">,</span><span style="color:#204a87;font-weight:bold">function</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">matchKey</span><span style="color:#000;font-weight:bold">,</span><span style="color:#000">mvalue</span><span style="color:#000;font-weight:bold">){</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#204a87;font-weight:bold">if</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">mvalue</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">key</span> <span style="color:#ce5c00;font-weight:bold">==</span> <span style="color:#4e9a06">&#34;tags&#34;</span> <span style="color:#ce5c00;font-weight:bold">||</span> <span style="color:#000">mvalue</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">key</span> <span style="color:#ce5c00;font-weight:bold">==</span> <span style="color:#4e9a06">&#34;categories&#34;</span> <span style="color:#000;font-weight:bold">){</span>
+</span></span><span style="display:flex;"><span>          <span style="color:#000">snippetHighlights</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">push</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">mvalue</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">value</span><span style="color:#000;font-weight:bold">);</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#000;font-weight:bold">}</span><span style="color:#204a87;font-weight:bold">else</span> <span style="color:#204a87;font-weight:bold">if</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">mvalue</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">key</span> <span style="color:#ce5c00;font-weight:bold">==</span> <span style="color:#4e9a06">&#34;contents&#34;</span><span style="color:#000;font-weight:bold">){</span>
+</span></span><span style="display:flex;"><span>          <span style="color:#000">start</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">mvalue</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">indices</span><span style="color:#000;font-weight:bold">[</span><span style="color:#0000cf;font-weight:bold">0</span><span style="color:#000;font-weight:bold">][</span><span style="color:#0000cf;font-weight:bold">0</span><span style="color:#000;font-weight:bold">]</span><span style="color:#ce5c00;font-weight:bold">-</span><span style="color:#000">summaryInclude</span><span style="color:#ce5c00;font-weight:bold">&gt;</span><span style="color:#0000cf;font-weight:bold">0</span><span style="color:#ce5c00;font-weight:bold">?</span><span style="color:#000">mvalue</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">indices</span><span style="color:#000;font-weight:bold">[</span><span style="color:#0000cf;font-weight:bold">0</span><span style="color:#000;font-weight:bold">][</span><span style="color:#0000cf;font-weight:bold">0</span><span style="color:#000;font-weight:bold">]</span><span style="color:#ce5c00;font-weight:bold">-</span><span style="color:#000">summaryInclude</span><span style="color:#ce5c00;font-weight:bold">:</span><span style="color:#0000cf;font-weight:bold">0</span><span style="color:#000;font-weight:bold">;</span>
+</span></span><span style="display:flex;"><span>          <span style="color:#000">end</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">mvalue</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">indices</span><span style="color:#000;font-weight:bold">[</span><span style="color:#0000cf;font-weight:bold">0</span><span style="color:#000;font-weight:bold">][</span><span style="color:#0000cf;font-weight:bold">1</span><span style="color:#000;font-weight:bold">]</span><span style="color:#ce5c00;font-weight:bold">+</span><span style="color:#000">summaryInclude</span><span style="color:#ce5c00;font-weight:bold">&lt;</span><span style="color:#000">contents</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">length</span><span style="color:#ce5c00;font-weight:bold">?</span><span style="color:#000">mvalue</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">indices</span><span style="color:#000;font-weight:bold">[</span><span style="color:#0000cf;font-weight:bold">0</span><span style="color:#000;font-weight:bold">][</span><span style="color:#0000cf;font-weight:bold">1</span><span style="color:#000;font-weight:bold">]</span><span style="color:#ce5c00;font-weight:bold">+</span><span style="color:#000">summaryInclude</span><span style="color:#ce5c00;font-weight:bold">:</span><span style="color:#000">contents</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">length</span><span style="color:#000;font-weight:bold">;</span>
+</span></span><span style="display:flex;"><span>          <span style="color:#000">snippet</span> <span style="color:#ce5c00;font-weight:bold">+=</span> <span style="color:#000">contents</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">substring</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">start</span><span style="color:#000;font-weight:bold">,</span><span style="color:#000">end</span><span style="color:#000;font-weight:bold">);</span>
+</span></span><span style="display:flex;"><span>          <span style="color:#000">snippetHighlights</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">push</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">mvalue</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">value</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">substring</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">mvalue</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">indices</span><span style="color:#000;font-weight:bold">[</span><span style="color:#0000cf;font-weight:bold">0</span><span style="color:#000;font-weight:bold">][</span><span style="color:#0000cf;font-weight:bold">0</span><span style="color:#000;font-weight:bold">],</span><span style="color:#000">mvalue</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">indices</span><span style="color:#000;font-weight:bold">[</span><span style="color:#0000cf;font-weight:bold">0</span><span style="color:#000;font-weight:bold">][</span><span style="color:#0000cf;font-weight:bold">1</span><span style="color:#000;font-weight:bold">]</span><span style="color:#ce5c00;font-weight:bold">-</span><span style="color:#000">mvalue</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">indices</span><span style="color:#000;font-weight:bold">[</span><span style="color:#0000cf;font-weight:bold">0</span><span style="color:#000;font-weight:bold">][</span><span style="color:#0000cf;font-weight:bold">0</span><span style="color:#000;font-weight:bold">]</span><span style="color:#ce5c00;font-weight:bold">+</span><span style="color:#0000cf;font-weight:bold">1</span><span style="color:#000;font-weight:bold">));</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#000;font-weight:bold">}</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#000;font-weight:bold">});</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#000;font-weight:bold">}</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#204a87;font-weight:bold">if</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">snippet</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">length</span><span style="color:#ce5c00;font-weight:bold">&lt;</span><span style="color:#0000cf;font-weight:bold">1</span><span style="color:#000;font-weight:bold">){</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#000">snippet</span> <span style="color:#ce5c00;font-weight:bold">+=</span> <span style="color:#000">contents</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">substring</span><span style="color:#000;font-weight:bold">(</span><span style="color:#0000cf;font-weight:bold">0</span><span style="color:#000;font-weight:bold">,</span><span style="color:#000">summaryInclude</span><span style="color:#ce5c00;font-weight:bold">*</span><span style="color:#0000cf;font-weight:bold">2</span><span style="color:#000;font-weight:bold">);</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#000;font-weight:bold">}</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#8f5902;font-style:italic">//pull template from hugo templarte definition
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#204a87;font-weight:bold">var</span> <span style="color:#000">templateDefinition</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">$</span><span style="color:#000;font-weight:bold">(</span><span style="color:#4e9a06">&#39;#search-result-template&#39;</span><span style="color:#000;font-weight:bold">).</span><span style="color:#000">html</span><span style="color:#000;font-weight:bold">();</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#8f5902;font-style:italic">//replace values
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#204a87;font-weight:bold">var</span> <span style="color:#000">output</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">render</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">templateDefinition</span><span style="color:#000;font-weight:bold">,{</span><span style="color:#000">key</span><span style="color:#ce5c00;font-weight:bold">:</span><span style="color:#000">key</span><span style="color:#000;font-weight:bold">,</span><span style="color:#000">title</span><span style="color:#ce5c00;font-weight:bold">:</span><span style="color:#000">value</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">item</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">title</span><span style="color:#000;font-weight:bold">,</span><span style="color:#000">link</span><span style="color:#ce5c00;font-weight:bold">:</span><span style="color:#000">value</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">item</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">permalink</span><span style="color:#000;font-weight:bold">,</span><span style="color:#000">tags</span><span style="color:#ce5c00;font-weight:bold">:</span><span style="color:#000">value</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">item</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">tags</span><span style="color:#000;font-weight:bold">,</span><span style="color:#000">categories</span><span style="color:#ce5c00;font-weight:bold">:</span><span style="color:#000">value</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">item</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">categories</span><span style="color:#000;font-weight:bold">,</span><span style="color:#000">snippet</span><span style="color:#ce5c00;font-weight:bold">:</span><span style="color:#000">snippet</span><span style="color:#000;font-weight:bold">});</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#000">$</span><span style="color:#000;font-weight:bold">(</span><span style="color:#4e9a06">&#39;#search-results&#39;</span><span style="color:#000;font-weight:bold">).</span><span style="color:#000">append</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">output</span><span style="color:#000;font-weight:bold">);</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#000">$</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">each</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">snippetHighlights</span><span style="color:#000;font-weight:bold">,</span><span style="color:#204a87;font-weight:bold">function</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">snipkey</span><span style="color:#000;font-weight:bold">,</span><span style="color:#000">snipvalue</span><span style="color:#000;font-weight:bold">){</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#000">$</span><span style="color:#000;font-weight:bold">(</span><span style="color:#4e9a06">&#34;#summary-&#34;</span><span style="color:#ce5c00;font-weight:bold">+</span><span style="color:#000">key</span><span style="color:#000;font-weight:bold">).</span><span style="color:#000">mark</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">snipvalue</span><span style="color:#000;font-weight:bold">);</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#000;font-weight:bold">});</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#000;font-weight:bold">});</span>
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">}</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">function</span> <span style="color:#000">param</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">name</span><span style="color:#000;font-weight:bold">)</span> <span style="color:#000;font-weight:bold">{</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#204a87;font-weight:bold">return</span> <span style="color:#204a87">decodeURIComponent</span><span style="color:#000;font-weight:bold">((</span><span style="color:#000">location</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">search</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">split</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">name</span> <span style="color:#ce5c00;font-weight:bold">+</span> <span style="color:#4e9a06">&#39;=&#39;</span><span style="color:#000;font-weight:bold">)[</span><span style="color:#0000cf;font-weight:bold">1</span><span style="color:#000;font-weight:bold">]</span> <span style="color:#ce5c00;font-weight:bold">||</span> <span style="color:#4e9a06">&#39;&#39;</span><span style="color:#000;font-weight:bold">).</span><span style="color:#000">split</span><span style="color:#000;font-weight:bold">(</span><span style="color:#4e9a06">&#39;&amp;&#39;</span><span style="color:#000;font-weight:bold">)[</span><span style="color:#0000cf;font-weight:bold">0</span><span style="color:#000;font-weight:bold">]).</span><span style="color:#000">replace</span><span style="color:#000;font-weight:bold">(</span><span style="color:#4e9a06">/\+/g</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#4e9a06">&#39; &#39;</span><span style="color:#000;font-weight:bold">);</span>
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">}</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">function</span> <span style="color:#000">render</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">templateString</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">data</span><span style="color:#000;font-weight:bold">)</span> <span style="color:#000;font-weight:bold">{</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#204a87;font-weight:bold">var</span> <span style="color:#000">conditionalMatches</span><span style="color:#000;font-weight:bold">,</span><span style="color:#000">conditionalPattern</span><span style="color:#000;font-weight:bold">,</span><span style="color:#000">copy</span><span style="color:#000;font-weight:bold">;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#000">conditionalPattern</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#4e9a06">/\$\{\s*isset ([a-zA-Z]*) \s*\}(.*)\$\{\s*end\s*}/g</span><span style="color:#000;font-weight:bold">;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#8f5902;font-style:italic">//since loop below depends on re.lastInxdex, we use a copy to capture any manipulations whilst inside the loop
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>  <span style="color:#000">copy</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">templateString</span><span style="color:#000;font-weight:bold">;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#204a87;font-weight:bold">while</span> <span style="color:#000;font-weight:bold">((</span><span style="color:#000">conditionalMatches</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">conditionalPattern</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">exec</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">templateString</span><span style="color:#000;font-weight:bold">))</span> <span style="color:#ce5c00;font-weight:bold">!==</span> <span style="color:#204a87;font-weight:bold">null</span><span style="color:#000;font-weight:bold">)</span> <span style="color:#000;font-weight:bold">{</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#204a87;font-weight:bold">if</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">data</span><span style="color:#000;font-weight:bold">[</span><span style="color:#000">conditionalMatches</span><span style="color:#000;font-weight:bold">[</span><span style="color:#0000cf;font-weight:bold">1</span><span style="color:#000;font-weight:bold">]]){</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#8f5902;font-style:italic">//valid key, remove conditionals, leave contents.
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>      <span style="color:#000">copy</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">copy</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">replace</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">conditionalMatches</span><span style="color:#000;font-weight:bold">[</span><span style="color:#0000cf;font-weight:bold">0</span><span style="color:#000;font-weight:bold">],</span><span style="color:#000">conditionalMatches</span><span style="color:#000;font-weight:bold">[</span><span style="color:#0000cf;font-weight:bold">2</span><span style="color:#000;font-weight:bold">]);</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#000;font-weight:bold">}</span><span style="color:#204a87;font-weight:bold">else</span><span style="color:#000;font-weight:bold">{</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#8f5902;font-style:italic">//not valid, remove entire section
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>      <span style="color:#000">copy</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">copy</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">replace</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">conditionalMatches</span><span style="color:#000;font-weight:bold">[</span><span style="color:#0000cf;font-weight:bold">0</span><span style="color:#000;font-weight:bold">],</span><span style="color:#4e9a06">&#39;&#39;</span><span style="color:#000;font-weight:bold">);</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#000;font-weight:bold">}</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#000;font-weight:bold">}</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#000">templateString</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">copy</span><span style="color:#000;font-weight:bold">;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#8f5902;font-style:italic">//now any conditionals removed we can do simple substitution
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>  <span style="color:#204a87;font-weight:bold">var</span> <span style="color:#000">key</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">find</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">re</span><span style="color:#000;font-weight:bold">;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#204a87;font-weight:bold">for</span> <span style="color:#000;font-weight:bold">(</span><span style="color:#000">key</span> <span style="color:#204a87;font-weight:bold">in</span> <span style="color:#000">data</span><span style="color:#000;font-weight:bold">)</span> <span style="color:#000;font-weight:bold">{</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#000">find</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#4e9a06">&#39;\\$\\{\\s*&#39;</span> <span style="color:#ce5c00;font-weight:bold">+</span> <span style="color:#000">key</span> <span style="color:#ce5c00;font-weight:bold">+</span> <span style="color:#4e9a06">&#39;\\s*\\}&#39;</span><span style="color:#000;font-weight:bold">;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#000">re</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#204a87;font-weight:bold">new</span> <span style="color:#204a87">RegExp</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">find</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#4e9a06">&#39;g&#39;</span><span style="color:#000;font-weight:bold">);</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#000">templateString</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">templateString</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">replace</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">re</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">data</span><span style="color:#000;font-weight:bold">[</span><span style="color:#000">key</span><span style="color:#000;font-weight:bold">]);</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#000;font-weight:bold">}</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#204a87;font-weight:bold">return</span> <span style="color:#000">templateString</span><span style="color:#000;font-weight:bold">;</span>
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">}</span>
+</span></span></code></pre></div>
+	
+	
+	<div class="text-muted mt-5 pt-3 border-top">
+  Última modificación October 14, 2022: <a href="https://github.com/lmorillas/dwes/commit/96f81918867c02cc31daf508ce19ae1df098bb84">update (96f8191)</a>
+</div>
+
+</div>
+
+
+          </main>
+        </div>
+      </div>
+      
+<footer class="bg-dark py-5 row d-print-none">
+  <div class="container-fluid mx-sm-5">
+    <div class="row">
+      <div class="col-6 col-sm-4 text-xs-center order-sm-2">
+        
+      </div>
+      <div class="col-6 col-sm-4 text-right text-xs-center order-sm-3">
+        
+      </div>
+      <div class="col-12 col-sm-4 text-center py-2 order-sm-2">
+        <small class="text-white">&copy; 2022 @lmorillas Derechos reservados</small>
+        <small class="ml-1"><a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Política de privacidad</a></small>
+	
+		
+	
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+    integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+    crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.min.js"
+    integrity="sha512-UR25UO94eTnCVwjbXozyeVd6ZqpaAE9naiEUBK/A+QDbfSTQFhPGj5lOR6d8tsgbBk84Ggb5A3EkjsOgPRPcKA=="
+    crossorigin="anonymous"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/mermaid@8.13.4/dist/mermaid.min.js" integrity="sha512-JERecFUBbsm75UpkVheAuDOE8NdHjQBrPACfEQYPwvPG+fjgCpHAz1Jw2ci9EXmd3DdfiWth3O3CQvcfEg8gsA==" crossorigin="anonymous"></script>
+
+
+
+<style>
+.markmap > svg {
+  width: 100%;
+  height: 300px;
+}
+</style>
+<script>
+window.markmap = {
+  autoLoader: { manual: true },
+};
+</script>
+<script src="https://cdn.jsdelivr.net/npm/markmap-autoloader"></script>
+
+
+<script src='/js/tabpane-persist.js'></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script src="/hugo-tutorial/js/main.min.e0a752aa6c21a747d962a08f1eff7cc3567658032a6cbe09a650c335caf4674e.js" integrity="sha256-4KdSqmwhp0fZYqCPHv98w1Z2WAMqbL4JplDDNcr0Z04=" crossorigin="anonymous"></script>
+
+
+
+
+  </body>
+</html>
