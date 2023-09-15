@@ -1,7 +1,7 @@
 ---
 title: "Segunda tarea"
 date: 2017-01-05
-weight: 4
+weight: 40
 description:
 draft: true
   

@@ -1,7 +1,7 @@
 ---
 title: "Trabajo con datos"
 date: 2021-10-02
-weight: 30
+weight: 300
 description: 
   
 ---

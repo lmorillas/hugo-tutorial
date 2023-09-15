@@ -1,7 +1,7 @@
 ---
 title: "Cómo añadir contenido"
 date: 2017-01-05
-weight: 10
+weight: 100
 description: 
 
 ---
