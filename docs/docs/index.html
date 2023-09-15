@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="generator" content="Hugo 0.102.3" />
+<meta name="generator" content="Hugo 0.119.0-DEV">
 <link rel="alternate" type="application/rss&#43;xml" href="https://lmorillas.github.io/hugo-tutorial/docs/index.xml">
 <meta name="robots" content="index, follow">
 
@@ -26,8 +26,7 @@
 <meta property="og:description" content="Introducción a la creación de sitios estáticos con Hugo
 " />
 <meta property="og:type" content="website" />
-<meta property="og:url" content="https://lmorillas.github.io/hugo-tutorial/docs/" /><meta property="og:site_name" content="Webs estáticas con Hugo" />
-
+<meta property="og:url" content="https://lmorillas.github.io/hugo-tutorial/docs/" />
 <meta itemprop="name" content="Generadores de Sitios Estáticos">
 <meta itemprop="description" content="Introducción a la creación de sitios estáticos con Hugo
 "><meta name="twitter:card" content="summary"/>
@@ -82,9 +81,13 @@
       <li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child active-path" id="m-hugo-tutorialdocs-li">
   <a href="/hugo-tutorial/docs/" class="align-left pl-0 active td-sidebar-link td-sidebar-link__section tree-root" id="m-hugo-tutorialdocs"><span class="td-sidebar-nav-active-item">Generadores de Sitios Estáticos</span></a>
   <ul class="ul-1">
-    <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-hugo-tutorialdocsweben1minuto-li">
-  <input type="checkbox" id="m-hugo-tutorialdocsweben1minuto-check"/>
-  <label for="m-hugo-tutorialdocsweben1minuto-check"><a href="/hugo-tutorial/docs/weben1minuto/" class="align-left pl-0  td-sidebar-link td-sidebar-link__page" id="m-hugo-tutorialdocsweben1minuto"><span class="">Mi primera web con Hugo</span></a></label>
+    <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-hugo-tutorialdocsinicio-li">
+  <input type="checkbox" id="m-hugo-tutorialdocsinicio-check"/>
+  <label for="m-hugo-tutorialdocsinicio-check"><a href="/hugo-tutorial/docs/inicio/" class="align-left pl-0  td-sidebar-link td-sidebar-link__page" id="m-hugo-tutorialdocsinicio"><span class="">Inicio</span></a></label>
+  
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-hugo-tutorialdocsprimeraweb-li">
+  <input type="checkbox" id="m-hugo-tutorialdocsprimeraweb-check"/>
+  <label for="m-hugo-tutorialdocsprimeraweb-check"><a href="/hugo-tutorial/docs/primeraweb/" class="align-left pl-0  td-sidebar-link td-sidebar-link__page" id="m-hugo-tutorialdocsprimeraweb"><span class="">Mi primera web con Hugo</span></a></label>
   
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-hugo-tutorialdocstareamarkdown-li">
   <input type="checkbox" id="m-hugo-tutorialdocstareamarkdown-check"/>
@@ -161,8 +164,6 @@
     </li>
     <li><a href="#generadores-de-sitios-estáticos">Generadores de sitios estáticos</a></li>
     <li><a href="#ejemplos">Ejemplos</a></li>
-    <li><a href="#instalación">Instalación</a></li>
-    <li><a href="#primeros-pasos">Primeros pasos</a></li>
   </ul>
 </nav></div>
 
@@ -230,12 +231,17 @@
 <h2 id="arquitectura-jamstack">Arquitectura JAMSTACK</h2>
 <h3 id="qué-es-jamstack">¿Qué es JAMSTACK?</h3>
 <ul>
-<li>JAMstack is a modern web development architecture based on client-side JavaScript, reusable APIs, and prebuilt Markup.</li>
-<li><a href="https://jamstack.org/">https://jamstack.org/</a></li>
+<li>
+<p>JAMstack is a modern web development architecture based on client-side JavaScript, reusable APIs, and prebuilt Markup.
+<img src="https://blog.openreplay.com/images/jamstack-a-new-way-to-think-about-web-development-build-and-delivery/images/img2.png" alt="JAMSTACK"></p>
+</li>
+<li>
+<p><a href="https://jamstack.org/">https://jamstack.org/</a></p>
+</li>
 </ul>
-<p><img src="https://blog.openreplay.com/static/5d89407f8de6ba62afa35daec25043fe/1a152/img3.png" alt="Tradicional"></p>
-<p><img src="https://blog.openreplay.com/static/12870361e84816a70cbd0a174338fa61/1a152/img4.png" alt="Jamstack"></p>
-<p><img src="https://blog.openreplay.com/static/5d89407f8de6ba62afa35daec25043fe/1a152/img5.png" alt="Jamstack"></p>
+<p><img src="https://blog.openreplay.com/images/jamstack-a-new-way-to-think-about-web-development-build-and-delivery/images/img3.png" alt="Tradicional"></p>
+<p><img src="https://blog.openreplay.com/images/jamstack-a-new-way-to-think-about-web-development-build-and-delivery/images/img4.png" alt="Jamstack"></p>
+<p><img src="https://blog.openreplay.com/images/jamstack-a-new-way-to-think-about-web-development-build-and-delivery/images/img5.png" alt="Jamstack"></p>
 <h2 id="generadores-de-sitios-estáticos">Generadores de sitios estáticos</h2>
 <ul>
 <li><a href="https://jamstack.org/generators/">Lista de generdores</a></li>
@@ -246,47 +252,6 @@
 <li><a href="https://getbootstrap.com">https://getbootstrap.com</a></li>
 <li><a href="https://letsencrypt.org">https://letsencrypt.org</a></li>
 <li><a href="https://www.smashingmagazine.com">https://www.smashingmagazine.com</a></li>
-</ul>
-<h2 id="instalación">Instalación</h2>
-<p>Tiene instaladores para mac, windows y linux:</p>
-<ul>
-<li><a href="https://gohugo.io/getting-started/quick-start/#step-1-install-hugo">https://gohugo.io/getting-started/quick-start/#step-1-install-hugo</a></li>
-</ul>
-
-
-<div class="pageinfo pageinfo-primary">
-<p>Recuerda:</p>
-<ul>
-<li>Instalar</li>
-<li>Configurar el <strong>path</strong> del sistema</li>
-</ul>
-
-</div>
-
-<h2 id="primeros-pasos">Primeros pasos</h2>
-
-
-<div class="alert alert-primary" role="alert">
-<h4 class="alert-heading">Crear nuevo sitio</h4>
-
-    
-
-</div>
-
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ hugo new site &lt;nombre_del_sitio&gt;
-</span></span></code></pre></div>
-
-<div class="alert alert-primary" role="alert">
-<h4 class="alert-heading">Crear contenido</h4>
-
-    
-
-</div>
-
-<p>Repaso de sintaxis <strong>markdown</strong>:</p>
-<ul>
-<li><a href="https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet">https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet</a></li>
-<li><a href="https://programminghistorian.org/es/lecciones/introduccion-a-markdown">https://programminghistorian.org/es/lecciones/introduccion-a-markdown</a></li>
 </ul>
 
         <div class="section-index">
@@ -303,7 +268,15 @@
             
             <div class="entry">
                 <h5>
-                    <a href="/hugo-tutorial/docs/weben1minuto/">Mi primera web con Hugo</a>
+                    <a href="/hugo-tutorial/docs/inicio/">Inicio</a>
+                </h5>
+                <p></p>
+            </div>
+        
+            
+            <div class="entry">
+                <h5>
+                    <a href="/hugo-tutorial/docs/primeraweb/">Mi primera web con Hugo</a>
                 </h5>
                 <p></p>
             </div>
@@ -418,7 +391,7 @@
 	
 	
 	<div class="text-muted mt-5 pt-3 border-top">
-  Última modificación October 14, 2022: <a href="https://github.com/lmorillas/dwes/commit/96f81918867c02cc31daf508ce19ae1df098bb84">update (96f8191)</a>
+  Última modificación September 15, 2023: <a href="https://github.com/lmorillas/dwes/commit/ef292d9990661880b280e369bdb1eeb813f71f66">update (ef292d9)</a>
 </div>
 
 </div>
@@ -437,7 +410,7 @@
         
       </div>
       <div class="col-12 col-sm-4 text-center py-2 order-sm-2">
-        <small class="text-white">&copy; 2022 @lmorillas Derechos reservados</small>
+        <small class="text-white">&copy; 2023 @lmorillas Derechos reservados</small>
         <small class="ml-1"><a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Política de privacidad</a></small>
 	
 		

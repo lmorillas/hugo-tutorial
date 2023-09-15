@@ -18,39 +18,50 @@
 <link rel="icon" type="image/png" href="/hugo-tutorial/favicons/android-144x144.png" sizes="144x144">
 <link rel="icon" type="image/png" href="/hugo-tutorial/favicons/android-192x192.png" sizes="192x192">
 
-<title>Imágenes | Webs estáticas con Hugo</title>
+<title>Inicio | Webs estáticas con Hugo</title>
 <meta name="description" content="
 
 
-Introducción a la manipulación de imágenes
-Documentación:
+Objetivo: Instalación requisitos
+Contenidos:
 
-https://gohugo.io/content-management/image-processing …">
-<meta property="og:title" content="Imágenes" />
-<meta property="og:description" content="Introducción a la manipulación de imágenes
-Documentación:
-https://gohugo.io/content-management/image-processing https://gohugo.io/content-management/page-bundles Imágenes Podemos incluir las imágenes locales en la carpeta static o creando bundles con nuestras páginas.
-Organización de las páginas en manojos (bundles) $ hugo new viajes/galicia/index.md Esto nos permite crear un directorio en esa nueva carpeta (galicia) y podemos pegar en un directorio images nuestras imágenes.
-Podemos incluir las imágenes directamente en el markdown o usar el shorcode { { &lt; figure src=&quot;." />
+hugo
+git
+editor de texto
+
+
+Vamos a seguir este tutorial: …">
+<meta property="og:title" content="Inicio" />
+<meta property="og:description" content="Objetivo: Instalación requisitos
+Contenidos:
+hugo git editor de texto Vamos a seguir este tutorial: https://gohugo.io/getting-started/quick-start/
+Instalación Hugo https://gohugo.io/installation/
+Previo Instalar git https://git-scm.com/downloads o https://gitforwindows.org/ Instalar go https://go.dev/doc/install Chocolatey (Windows) https://chocolatey.org/install#individual ? https://sass-lang.com/install/ Instalar hugo Recuerda:
+Instalar Configurar el path del sistema comprobamos $ hugo version Instalación de un editor de texto Instala Visusal Studio Code https://code.visualstudio.com/
+Configurar Git Crear cuenta en Github (si no la tienes) https://docs.github.com/en/get-started/quickstart/set-up-git username y email username email $ git config --global user." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://lmorillas.github.io/hugo-tutorial/docs/imagenes/" /><meta property="article:section" content="docs" />
-<meta property="article:published_time" content="2021-01-05T00:00:00+00:00" />
+<meta property="og:url" content="https://lmorillas.github.io/hugo-tutorial/docs/inicio/" /><meta property="article:section" content="docs" />
+<meta property="article:published_time" content="2022-09-16T00:00:00+00:00" />
 <meta property="article:modified_time" content="2023-09-15T12:02:20+02:00" />
-<meta itemprop="name" content="Imágenes">
-<meta itemprop="description" content="Introducción a la manipulación de imágenes
-Documentación:
-https://gohugo.io/content-management/image-processing https://gohugo.io/content-management/page-bundles Imágenes Podemos incluir las imágenes locales en la carpeta static o creando bundles con nuestras páginas.
-Organización de las páginas en manojos (bundles) $ hugo new viajes/galicia/index.md Esto nos permite crear un directorio en esa nueva carpeta (galicia) y podemos pegar en un directorio images nuestras imágenes.
-Podemos incluir las imágenes directamente en el markdown o usar el shorcode { { &lt; figure src=&quot;."><meta itemprop="datePublished" content="2021-01-05T00:00:00+00:00" />
+<meta itemprop="name" content="Inicio">
+<meta itemprop="description" content="Objetivo: Instalación requisitos
+Contenidos:
+hugo git editor de texto Vamos a seguir este tutorial: https://gohugo.io/getting-started/quick-start/
+Instalación Hugo https://gohugo.io/installation/
+Previo Instalar git https://git-scm.com/downloads o https://gitforwindows.org/ Instalar go https://go.dev/doc/install Chocolatey (Windows) https://chocolatey.org/install#individual ? https://sass-lang.com/install/ Instalar hugo Recuerda:
+Instalar Configurar el path del sistema comprobamos $ hugo version Instalación de un editor de texto Instala Visusal Studio Code https://code.visualstudio.com/
+Configurar Git Crear cuenta en Github (si no la tienes) https://docs.github.com/en/get-started/quickstart/set-up-git username y email username email $ git config --global user."><meta itemprop="datePublished" content="2022-09-16T00:00:00+00:00" />
 <meta itemprop="dateModified" content="2023-09-15T12:02:20+02:00" />
-<meta itemprop="wordCount" content="154">
+<meta itemprop="wordCount" content="95">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Imágenes"/>
-<meta name="twitter:description" content="Introducción a la manipulación de imágenes
-Documentación:
-https://gohugo.io/content-management/image-processing https://gohugo.io/content-management/page-bundles Imágenes Podemos incluir las imágenes locales en la carpeta static o creando bundles con nuestras páginas.
-Organización de las páginas en manojos (bundles) $ hugo new viajes/galicia/index.md Esto nos permite crear un directorio en esa nueva carpeta (galicia) y podemos pegar en un directorio images nuestras imágenes.
-Podemos incluir las imágenes directamente en el markdown o usar el shorcode { { &lt; figure src=&quot;."/>
+<meta name="twitter:title" content="Inicio"/>
+<meta name="twitter:description" content="Objetivo: Instalación requisitos
+Contenidos:
+hugo git editor de texto Vamos a seguir este tutorial: https://gohugo.io/getting-started/quick-start/
+Instalación Hugo https://gohugo.io/installation/
+Previo Instalar git https://git-scm.com/downloads o https://gitforwindows.org/ Instalar go https://go.dev/doc/install Chocolatey (Windows) https://chocolatey.org/install#individual ? https://sass-lang.com/install/ Instalar hugo Recuerda:
+Instalar Configurar el path del sistema comprobamos $ hugo version Instalación de un editor de texto Instala Visusal Studio Code https://code.visualstudio.com/
+Configurar Git Crear cuenta en Github (si no la tienes) https://docs.github.com/en/get-started/quickstart/set-up-git username y email username email $ git config --global user."/>
 
 
 
@@ -99,9 +110,9 @@ Podemos incluir las imágenes directamente en el markdown o usar el shorcode { {
       <li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child active-path" id="m-hugo-tutorialdocs-li">
   <a href="/hugo-tutorial/docs/" class="align-left pl-0 td-sidebar-link td-sidebar-link__section tree-root" id="m-hugo-tutorialdocs"><span class="">Generadores de Sitios Estáticos</span></a>
   <ul class="ul-1">
-    <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-hugo-tutorialdocsinicio-li">
-  <input type="checkbox" id="m-hugo-tutorialdocsinicio-check"/>
-  <label for="m-hugo-tutorialdocsinicio-check"><a href="/hugo-tutorial/docs/inicio/" class="align-left pl-0  td-sidebar-link td-sidebar-link__page" id="m-hugo-tutorialdocsinicio"><span class="">Inicio</span></a></label>
+    <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child active-path" id="m-hugo-tutorialdocsinicio-li">
+  <input type="checkbox" id="m-hugo-tutorialdocsinicio-check" checked/>
+  <label for="m-hugo-tutorialdocsinicio-check"><a href="/hugo-tutorial/docs/inicio/" class="align-left pl-0  active td-sidebar-link td-sidebar-link__page" id="m-hugo-tutorialdocsinicio"><span class="td-sidebar-nav-active-item">Inicio</span></a></label>
   
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-hugo-tutorialdocsprimeraweb-li">
   <input type="checkbox" id="m-hugo-tutorialdocsprimeraweb-check"/>
@@ -123,9 +134,9 @@ Podemos incluir las imágenes directamente en el markdown o usar el shorcode { {
   <input type="checkbox" id="m-hugo-tutorialdocsmenus-check"/>
   <label for="m-hugo-tutorialdocsmenus-check"><a href="/hugo-tutorial/docs/menus/" class="align-left pl-0  td-sidebar-link td-sidebar-link__page" id="m-hugo-tutorialdocsmenus"><span class="">Menús</span></a></label>
   
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child active-path" id="m-hugo-tutorialdocsimagenes-li">
-  <input type="checkbox" id="m-hugo-tutorialdocsimagenes-check" checked/>
-  <label for="m-hugo-tutorialdocsimagenes-check"><a href="/hugo-tutorial/docs/imagenes/" class="align-left pl-0  active td-sidebar-link td-sidebar-link__page" id="m-hugo-tutorialdocsimagenes"><span class="td-sidebar-nav-active-item">Imágenes</span></a></label>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-hugo-tutorialdocsimagenes-li">
+  <input type="checkbox" id="m-hugo-tutorialdocsimagenes-check"/>
+  <label for="m-hugo-tutorialdocsimagenes-check"><a href="/hugo-tutorial/docs/imagenes/" class="align-left pl-0  td-sidebar-link td-sidebar-link__page" id="m-hugo-tutorialdocsimagenes"><span class="">Imágenes</span></a></label>
   
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-hugo-tutorialdocstemplates-li">
   <input type="checkbox" id="m-hugo-tutorialdocstemplates-check"/>
@@ -174,8 +185,20 @@ Podemos incluir las imágenes directamente en el markdown o usar el shorcode { {
 
 <div class="td-toc"><nav id="TableOfContents">
   <ul>
-    <li><a href="#imágenes">Imágenes</a></li>
-    <li><a href="#organización-de-las-páginas-en-manojos-bundles">Organización de las páginas en <em>manojos</em> (bundles)</a></li>
+    <li><a href="#instalación-hugo">Instalación Hugo</a>
+      <ul>
+        <li><a href="#previo">Previo</a></li>
+        <li><a href="#instalar-hugo">Instalar <strong>hugo</strong></a></li>
+        <li><a href="#comprobamos">comprobamos</a></li>
+      </ul>
+    </li>
+    <li><a href="#instalación-de-un-editor-de-texto">Instalación de un editor de texto</a></li>
+    <li><a href="#configurar-git">Configurar Git</a>
+      <ul>
+        <li><a href="#username--y-email">username  y email</a></li>
+        <li><a href="#autenticación">Autenticación</a></li>
+      </ul>
+    </li>
   </ul>
 </nav></div>
 
@@ -209,7 +232,7 @@ Podemos incluir las imágenes directamente en el markdown o usar el shorcode { {
             
             
 <div class="td-content">
-	<h1>Imágenes</h1>
+	<h1>Inicio</h1>
 	
 	<header class="article-meta">
 		
@@ -229,39 +252,73 @@ Podemos incluir las imágenes directamente en el markdown o usar el shorcode { {
 	
 
 <div class="pageinfo pageinfo-primary">
-<p>Introducción a la manipulación de imágenes</p>
-<p><strong>Documentación:</strong></p>
+<p><strong>Objetivo:</strong> Instalación requisitos</p>
+<p><strong>Contenidos:</strong></p>
 <ul>
-<li><a href="https://gohugo.io/content-management/image-processing">https://gohugo.io/content-management/image-processing</a></li>
-<li><a href="https://gohugo.io/content-management/page-bundles">https://gohugo.io/content-management/page-bundles</a></li>
+<li>hugo</li>
+<li>git</li>
+<li>editor de texto</li>
+</ul>
+<blockquote>
+<p>Vamos a seguir este tutorial: <a href="https://gohugo.io/getting-started/quick-start/">https://gohugo.io/getting-started/quick-start/</a></p>
+</blockquote>
+
+</div>
+
+<h2 id="instalación-hugo">Instalación Hugo</h2>
+<p><a href="https://gohugo.io/installation/">https://gohugo.io/installation/</a></p>
+<h3 id="previo">Previo</h3>
+<ul>
+<li>Instalar <strong>git</strong> <a href="https://git-scm.com/downloads">https://git-scm.com/downloads</a> o <a href="https://gitforwindows.org/">https://gitforwindows.org/</a></li>
+<li>Instalar <strong>go</strong>  <a href="https://go.dev/doc/install">https://go.dev/doc/install</a></li>
+</ul>
+<blockquote>
+<ul>
+<li>Chocolatey (Windows) <a href="https://chocolatey.org/install#individual">https://chocolatey.org/install#individual</a> ?</li>
+<li><a href="https://sass-lang.com/install/">https://sass-lang.com/install/</a></li>
+</ul>
+</blockquote>
+<h3 id="instalar-hugo">Instalar <strong>hugo</strong></h3>
+
+
+<div class="pageinfo pageinfo-primary">
+<p>Recuerda:</p>
+<ul>
+<li>Instalar</li>
+<li>Configurar el <strong>path</strong> del sistema</li>
 </ul>
 
 </div>
 
-<h2 id="imágenes">Imágenes</h2>
-<p>Podemos incluir las imágenes locales en la carpeta <code>static</code> o creando <code>bundles</code> con nuestras páginas.</p>
-<h2 id="organización-de-las-páginas-en-manojos-bundles">Organización de las páginas en <em>manojos</em> (bundles)</h2>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ hugo new viajes/galicia/index.md
-</span></span></code></pre></div><p>Esto nos permite crear un directorio en esa nueva carpeta (<code>galicia</code>) y podemos pegar en un directorio <code>images</code> nuestras imágenes.</p>
-<p>Podemos incluir las imágenes directamente en el markdown o usar el shorcode <code>{ { &lt; figure src=&quot;...&quot; &gt;}}</code>:</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-md" data-lang="md"><span style="display:flex;"><span>{ { <span style="color:#000;font-weight:bold">&lt;</span> <span style="color:#204a87;font-weight:bold">figure</span> <span style="color:#c4a000">src</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">&#34;images/galicia.jpg&#34;</span> <span style="color:#c4a000">title</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">&#34;Galicia&#34;</span> <span style="color:#000;font-weight:bold">&gt;</span>}}
-</span></span></code></pre></div><p>También podemos crear un shortcode más preciso. Por ejemplo, este shortcode <strong>dimensionaFigura.html</strong></p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>{{ $imagen := $.Page.Resources.GetMatch (.Get 0)}}
-</span></span><span style="display:flex;"><span>{{ $imagenReducida := $imagen.Resize &#34;480x&#34; }}
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">&lt;</span><span style="color:#204a87;font-weight:bold">figure</span> <span style="color:#c4a000">class</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">&#34;figure&#34;</span><span style="color:#000;font-weight:bold">&gt;</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#000;font-weight:bold">&lt;</span><span style="color:#204a87;font-weight:bold">a</span> <span style="color:#c4a000">href</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">&#34;{{ $imagen.RelPermalink }}&#34;</span><span style="color:#000;font-weight:bold">&gt;</span>
-</span></span><span style="display:flex;"><span>    {{ with $imagenReducida }}
-</span></span><span style="display:flex;"><span>    <span style="color:#000;font-weight:bold">&lt;</span><span style="color:#204a87;font-weight:bold">img</span> <span style="color:#c4a000">src</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">&#34;{{ .RelPermalink }}&#34;</span>
-</span></span><span style="display:flex;"><span>         <span style="color:#c4a000">width</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">&#34;{{ .Width }}&#34;</span> <span style="color:#c4a000">height</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">&#34;{{ .Height }}&#34;</span>
-</span></span><span style="display:flex;"><span>         <span style="color:#c4a000">alt</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">&#34;{{ $.Get 1 }}&#34;</span> <span style="color:#c4a000">class</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">&#34;figure-img img-fluid&#34;</span><span style="color:#000;font-weight:bold">&gt;</span>
-</span></span><span style="display:flex;"><span>    {{ end }}
-</span></span><span style="display:flex;"><span>  <span style="color:#000;font-weight:bold">&lt;/</span><span style="color:#204a87;font-weight:bold">a</span><span style="color:#000;font-weight:bold">&gt;</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#000;font-weight:bold">&lt;</span><span style="color:#204a87;font-weight:bold">figcaption</span> <span style="color:#c4a000">class</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">&#34;figure-caption&#34;</span><span style="color:#000;font-weight:bold">&gt;</span>{{ .Get 1 }}<span style="color:#000;font-weight:bold">&lt;/</span><span style="color:#204a87;font-weight:bold">figcaption</span><span style="color:#000;font-weight:bold">&gt;</span>
-</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">&lt;/</span><span style="color:#204a87;font-weight:bold">figure</span><span style="color:#000;font-weight:bold">&gt;</span>
-</span></span></code></pre></div><p>Que luego podemos usar así:</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>{ { <span style="color:#000;font-weight:bold">&lt;</span> <span style="color:#204a87;font-weight:bold">dimensionaFigura</span> <span style="color:#a40000">&#34;</span><span style="color:#c4a000">galicia</span><span style="color:#a40000">.</span><span style="color:#c4a000">jpg</span><span style="color:#a40000">&#34;</span> <span style="color:#a40000">&#34;</span><span style="color:#c4a000">Galicia</span><span style="color:#a40000">&#34;</span> <span style="color:#000;font-weight:bold">&gt;</span> }}
-</span></span></code></pre></div>
+<h3 id="comprobamos">comprobamos</h3>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ hugo version
+</span></span></code></pre></div><h2 id="instalación-de-un-editor-de-texto">Instalación de un editor de texto</h2>
+<p>Instala Visusal Studio Code <a href="https://code.visualstudio.com/">https://code.visualstudio.com/</a></p>
+<h2 id="configurar-git">Configurar Git</h2>
+<ul>
+<li><a href="https://docs.github.com/en/get-started/signing-up-for-github/signing-up-for-a-new-github-account">Crear cuenta en Github</a> (si no la tienes)</li>
+<li><a href="https://docs.github.com/en/get-started/quickstart/set-up-git">https://docs.github.com/en/get-started/quickstart/set-up-git</a></li>
+</ul>
+<h3 id="username--y-email">username  y email</h3>
+<ul>
+<li><a href="https://docs.github.com/en/get-started/getting-started-with-git/setting-your-username-in-git">username</a></li>
+<li><a href="https://docs.github.com/en/account-and-profile/setting-up-and-managing-your-personal-account-on-github/managing-email-preferences/setting-your-commit-email-address">email</a></li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ git config --global user.name <span style="color:#4e9a06">&#34;John Doe&#34;</span>
+</span></span><span style="display:flex;"><span>$ git config --global user.email zzz@xxx.com
+</span></span></code></pre></div><h3 id="autenticación">Autenticación</h3>
+<ul>
+<li>
+<p>Tokens <a href="https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens">https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens</a></p>
+</li>
+<li>
+<p><a href="https://github.com/git-ecosystem/git-credential-manager/blob/release/docs/install.md">https://github.com/git-ecosystem/git-credential-manager/blob/release/docs/install.md</a></p>
+</li>
+</ul>
+<blockquote>
+<p>TAREA: Revisa cómo hacerlo desde <a href="https://code.visualstudio.com/docs/sourcecontrol/github">VSCode</a></p>
+</blockquote>
+
 	
 	
 	<div class="text-muted mt-5 pt-3 border-top">

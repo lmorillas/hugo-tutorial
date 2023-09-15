@@ -2,50 +2,53 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://lmorillas.github.io/hugo-tutorial/docs/weben1minuto/</loc>
-    <lastmod>2022-10-14T10:07:55+02:00</lastmod>
-  </url><url>
     <loc>https://lmorillas.github.io/hugo-tutorial/docs/</loc>
-    <lastmod>2022-10-14T10:07:55+02:00</lastmod>
+    <lastmod>2023-09-15T12:02:20+02:00</lastmod>
+  </url><url>
+    <loc>https://lmorillas.github.io/hugo-tutorial/docs/inicio/</loc>
+    <lastmod>2023-09-15T12:02:20+02:00</lastmod>
+  </url><url>
+    <loc>https://lmorillas.github.io/hugo-tutorial/docs/primeraweb/</loc>
+    <lastmod>2023-09-15T12:02:20+02:00</lastmod>
   </url><url>
     <loc>https://lmorillas.github.io/hugo-tutorial/docs/tareamarkdown/</loc>
-    <lastmod>2022-10-14T10:07:55+02:00</lastmod>
+    <lastmod>2023-09-15T12:02:20+02:00</lastmod>
   </url><url>
     <loc>https://lmorillas.github.io/hugo-tutorial/docs/contenido/</loc>
-    <lastmod>2022-10-14T10:07:55+02:00</lastmod>
+    <lastmod>2023-09-15T12:02:20+02:00</lastmod>
   </url><url>
     <loc>https://lmorillas.github.io/hugo-tutorial/docs/nuevo_tema/</loc>
-    <lastmod>2022-10-14T10:07:55+02:00</lastmod>
+    <lastmod>2023-09-15T12:02:20+02:00</lastmod>
   </url><url>
     <loc>https://lmorillas.github.io/hugo-tutorial/docs/menus/</loc>
-    <lastmod>2022-10-14T10:07:55+02:00</lastmod>
+    <lastmod>2023-09-15T12:02:20+02:00</lastmod>
   </url><url>
     <loc>https://lmorillas.github.io/hugo-tutorial/docs/imagenes/</loc>
-    <lastmod>2022-10-14T10:07:55+02:00</lastmod>
+    <lastmod>2023-09-15T12:02:20+02:00</lastmod>
   </url><url>
     <loc>https://lmorillas.github.io/hugo-tutorial/docs/templates/</loc>
-    <lastmod>2022-10-14T10:07:55+02:00</lastmod>
+    <lastmod>2023-09-15T12:02:20+02:00</lastmod>
   </url><url>
     <loc>https://lmorillas.github.io/hugo-tutorial/docs/shortcodes/</loc>
-    <lastmod>2022-10-14T10:07:55+02:00</lastmod>
+    <lastmod>2023-09-15T12:02:20+02:00</lastmod>
   </url><url>
     <loc>https://lmorillas.github.io/hugo-tutorial/docs/mapas_leaflet/</loc>
-    <lastmod>2022-10-14T10:07:55+02:00</lastmod>
+    <lastmod>2023-09-15T12:02:20+02:00</lastmod>
   </url><url>
     <loc>https://lmorillas.github.io/hugo-tutorial/docs/datos/</loc>
-    <lastmod>2022-10-14T10:07:55+02:00</lastmod>
+    <lastmod>2023-09-15T12:02:20+02:00</lastmod>
   </url><url>
     <loc>https://lmorillas.github.io/hugo-tutorial/docs/busqueda/</loc>
-    <lastmod>2022-10-14T10:07:55+02:00</lastmod>
+    <lastmod>2023-09-15T12:02:20+02:00</lastmod>
   </url><url>
     <loc>https://lmorillas.github.io/hugo-tutorial/docs/formulario/</loc>
-    <lastmod>2022-10-14T10:07:55+02:00</lastmod>
+    <lastmod>2023-09-15T12:02:20+02:00</lastmod>
   </url><url>
     <loc>https://lmorillas.github.io/hugo-tutorial/docs/notas-repaso/</loc>
-    <lastmod>2022-10-14T10:07:55+02:00</lastmod>
+    <lastmod>2023-09-15T12:02:20+02:00</lastmod>
   </url><url>
     <loc>https://lmorillas.github.io/hugo-tutorial/docs/privacidad/</loc>
-    <lastmod>2022-10-14T10:07:55+02:00</lastmod>
+    <lastmod>2023-09-15T12:02:20+02:00</lastmod>
   </url><url>
     <loc>https://lmorillas.github.io/hugo-tutorial/categories/</loc>
   </url><url>
