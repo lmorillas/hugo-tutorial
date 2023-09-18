@@ -68,3 +68,4 @@ $ git config --global user.email zzz@xxx.com
 * https://github.com/git-ecosystem/git-credential-manager/blob/release/docs/install.md
 
 > TAREA: Revisa cómo hacerlo desde [VSCode](https://code.visualstudio.com/docs/sourcecontrol/github)
+

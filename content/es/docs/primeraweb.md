@@ -21,6 +21,42 @@ Seguimos las instrucciones de https://gohugo.io/getting-started/quick-start/
 public
 ```
 
+### Instalación del tema como un módulo
+En el ejemplo se instala como un `submódulo` de `git`
+
+Pero también se puede instalar como un `módulo de hugo`
+
+> https://gohugo.io/hugo-modules/use-modules/
+
+> Aquí tienes un ejemplo: https://catherinepope.com/posts/add-hugo-theme-as-submodule/
+
+* Inicializar módulo
+```bash
+hugo mod init <miweb>
+ o 
+
+hugo mod init github.com/<miusuario>/<mi repositorio>
+```
+
+* Actualizar los módulos
+```bash
+hugo mod get -u
+```
+
+
+* Usar un módulo para un tema
+
+```toml
+[module]
+[[module.imports]]
+    path = 'github.com/theNewDynamic/gohugo-theme-ananke'
+
+```
+
+```bash
+
+```
+
 ## Añadir contenido
 
 ## Configurar el sitio
